@@ -103,6 +103,20 @@ def groceryDF(groceryCsvPath):
     return final
 
 
+def counsellorDF(counsellorCsvPath):
+    df = pd.read_csv(counsellorCsvPath)
+    final = pd.DataFrame()
+    final["name"] = df["COUNSELLOR NAME"]
+    final["verified"] = df["VERIFIED?"].apply(lambda s: s.upper().strip('.').strip(' ')) == 'YES'
+    final["contact"] = df["CONTACT NUMBERS"].fillna('Contact Unknown')
+    final["location"] = df["ORGANISATION/ LOCATION/ TELE-CONSULTATION"].fillna('Locality Unknown')
+    final["work_hours"] = df["DAYS AND TIME AVAILABLE"].fillna('Unknown')
+    final["charges"] = df["CHARGES APPLICABLE"].fillna('Unknown')
+    final["whatsapp"] = df["WHATSAPP AVAILABLE?"].fillna('NO').apply(lambda s: s.upper().strip())
+    final["notes"] = df['NOTES'].fillna('-')
+    return final
+
+
 if __name__ == '__main__':
     hospital = hospitalDF('./csv/hospitals.csv')
     hospital.to_json('./json/hospitals.json', orient='records')
@@ -121,3 +135,6 @@ if __name__ == '__main__':
 
     grocery = groceryDF('./csv/grocery.csv')
     grocery.to_json('./json/grocery.json', orient='records')
+
+    counsellor = counsellorDF('./csv/counsellors.csv')
+    counsellor.to_json('./json/counsellors.json', orient='records')

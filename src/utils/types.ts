@@ -79,3 +79,14 @@ export interface GrocerySupplier {
     work_days: string;
     notes: string;
 }
+
+export interface Counsellor {
+    name: string;
+    verified: boolean;
+    contact: string;
+    location: string;
+    work_hours: string;
+    charges: string;
+    whatsapp: string;
+    notes: string;
+}
