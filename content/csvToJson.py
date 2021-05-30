@@ -44,11 +44,26 @@ def testCenterDF(testCenterCsvPath):
     final = pd.DataFrame()
     final["name"] = df["NAME OF TEST CENTER"]
     final["verified"] = df["VERIFIED?"] != 'NO'
-    final["type"] = df["TYPE"].fillna('Unknown Institution')
+    final["type"] = df["TYPE"].fillna('Unknown')
     final["contact"] = df["CONTACT NUMBERS"].fillna('Contact Unknown')
     final["location"] = df["LOCATION"].fillna('Locality Unknown')
     final["address"] = df["ADDRESS"].fillna('Address Unknown')
     final["home_collection"] = df["HOME COLLECTION"].fillna('Unknown')
+    final["work_hours"] = df["WORK TIME"].fillna('Unknown')
+    final["work_days"] = df["WORK DAYS"].fillna('Unknown')
+    final["notes"] = df['NOTES'].fillna('-')
+    return final
+
+
+def oxygenSupplierDF(oxygenSupplierCsvPath):
+    df = pd.read_csv(oxygenSupplierCsvPath)
+    final = pd.DataFrame()
+    final["name"] = df["NAME OF SUPPLIER"]
+    final["verified"] = df["VERIFIED?"] != 'NO'
+    final["contact"] = df["CONTACT NUMBERS"].fillna('Contact Unknown')
+    final["location"] = df["LOCATION"].fillna('Locality Unknown')
+    final["address"] = df["ADDRESS"].fillna('Address Unknown')
+    final["delivery_available"] = df["DELIVERY AVAILABLE"].fillna('Unknown')
     final["work_hours"] = df["WORK TIME"].fillna('Unknown')
     final["work_days"] = df["WORK DAYS"].fillna('Unknown')
     final["notes"] = df['NOTES'].fillna('-')
@@ -64,3 +79,6 @@ if __name__ == '__main__':
 
     testCenter = testCenterDF('./csv/testCenters.csv')
     testCenter.to_json('./json/testCenters.json', orient='records')
+
+    oxygenSupplier = oxygenSupplierDF('./csv/oxygenSuppliers.csv')
+    oxygenSupplier.to_json('./json/oxygenSuppliers.json', orient='records')

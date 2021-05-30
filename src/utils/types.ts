@@ -40,3 +40,15 @@ export interface TestCenter {
     work_days: string;
     notes: string;
 }
+
+export interface OxygenSupplier {
+    name: string;
+    verified: string;
+    contact: string;
+    location: string;
+    address: string;
+    delivery_available: string;
+    work_hours: string;
+    work_days: string;
+    notes: string;
+}
