@@ -23,7 +23,27 @@ def hospitalDF(hospitalCsvPath):
     return final
 
 
-if __name__ == '__main__':
-    hospital = hospitalDF('hospitals.csv')
-    hospital.to_json('./hospitals.json', orient='records')
+def ambulanceDF(ambulancesCsvPath):
+    df = pd.read_csv(ambulancesCsvPath)
+    df.head()
+    final = pd.DataFrame()
+    final["name"] = df["AMBULANCE NAME"]
+    final["verified"] = df["VERIFIED?"] != 'NO'
+    final["type"] = df["TYPE"].fillna('Unknown Institution')
+    final["facility"] = df["FACILITY"].fillna('Facilities Not Mention')
+    final["contact"] = df["CONTACT NUMBER"].fillna('Contact Unknown')
+    final["contact_name"] = df["CONTACT NAME"].fillna('Name Unknown')
+    final["location"] = df["LOCATION"].fillna('Locality Unknown')
+    final["district"] = df["DISTRICT"].fillna('Unknown')
+    final["address"] = df["ADDRESS"].fillna('Address Unknown')
+    final["service_areas"] = df["SERVICE AREAS"].fillna('Unknown')
+    final["notes"] = df['NOTES'].fillna('-')
+    return final
 
+
+if __name__ == '__main__':
+    hospital = hospitalDF('./csv/hospitals.csv')
+    hospital.to_json('./json/hospitals.json', orient='records')
+
+    ambulance = ambulanceDF('./csv/ambulances.csv')
+    ambulance.to_json('./json/ambulances.json', orient='records')

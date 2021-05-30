@@ -13,3 +13,17 @@ export interface Hospital {
     nodal_officer_contact: string;
     notes: string;
 }
+
+export interface Ambulance {
+    name: string;
+    verified: string;
+    type: string;
+    facility: string;
+    contact: string;
+    contact_name: string;
+    location: string;
+    district: string;
+    address: string;
+    service_areas: string;
+    notes: string;
+}
