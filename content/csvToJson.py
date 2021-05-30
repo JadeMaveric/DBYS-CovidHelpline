@@ -88,6 +88,21 @@ def foodDF(foodCsvPath):
     return final
 
 
+def groceryDF(groceryCsvPath):
+    df = pd.read_csv(groceryCsvPath)
+    final = pd.DataFrame()
+    final["name"] = df["SUPPLIER"]
+    final["verified"] = df["VERIFIED?"].apply(lambda s: s.upper().strip('.').strip(' ')) == 'YES'
+    final["contact"] = df["CONTACT"].fillna('Contact Unknown')
+    final["location"] = df["LOCATION"].fillna('Locality Unknown')
+    final["delivery_area"] = df["DELIVERY AREA"].fillna('Unknown')
+    final["delivery_fee"] = df['DELIVERY FEE'].fillna('-')
+    final["work_hours"] = df["TIMINGS"].fillna('Unknown')
+    final["work_days"] = df["DAYS"].fillna('Unknown')
+    final["notes"] = df['NOTES'].fillna('-')
+    return final
+
+
 if __name__ == '__main__':
     hospital = hospitalDF('./csv/hospitals.csv')
     hospital.to_json('./json/hospitals.json', orient='records')
@@ -103,3 +118,6 @@ if __name__ == '__main__':
 
     food = foodDF('./csv/food.csv')
     food.to_json('./json/food.json', orient='records')
+
+    grocery = groceryDF('./csv/grocery.csv')
+    grocery.to_json('./json/grocery.json', orient='records')

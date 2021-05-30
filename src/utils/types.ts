@@ -67,3 +67,15 @@ export interface FoodSupplier {
     work_days: string;
     notes: string;
 }
+
+export interface GrocerySupplier {
+    name: string;
+    verified: boolean;
+    contact: string;
+    location: string;
+    delivery_area: string;
+    delivery_fee: string;
+    work_hours: string;
+    work_days: string;
+    notes: string;
+}
