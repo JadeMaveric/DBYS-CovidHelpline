@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { Box, Grid, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import SearchAppBar from '../components/SearchAppBar';
-import AmbulanceCard from '../components/AmbulanceCard';
-import JSONData from '../../content/json/ambulances.json';
+import FoodSupplierCard from '../components/FoodSupplierCard';
+import JSONData from '../../content/json/food.json';
 import keyworkFilter from '../utils/keywordFilter';
-import { Ambulance } from '../utils/types';
+import { FoodSupplier } from '../utils/types';
 
 const useStyles = makeStyles({
     container: {
@@ -13,22 +13,22 @@ const useStyles = makeStyles({
     }
 })
 
-export default function AmbulanceView() {
+export default function FoodSupplierView() {
     const classes = useStyles();
     const [searchTerm, updateSearchTerm] = useState("");
 
     //@ts-ignore
-    const ambulances = keyworkFilter(JSONData, searchTerm) as Ambulance[]
+    const foodSuppliers = keyworkFilter(JSONData, searchTerm) as FoodSupplier[]
 
     return (
         <>
-            <SearchAppBar title="Ambulances" updateSearch={updateSearchTerm}/>
+            <SearchAppBar title="Food Suppliers" updateSearch={updateSearchTerm}/>
             <Box className={classes.container}>
-                { ambulances.length
+                { foodSuppliers.length
                 ? <Grid container spacing={1}>
-                    {ambulances.map((ambulance, index) => 
-                        <Grid item key={`ambulance_${index}`} xl={3} lg={3} md={4} sm={6} xs={12}>
-                            <AmbulanceCard ambulance={ambulance}/>
+                    {foodSuppliers.map((foodSupplier, index) => 
+                        <Grid item key={`foodSupplier_${index}`} xl={3} lg={3} md={4} sm={6} xs={12}>
+                            <FoodSupplierCard foodSupplier={foodSupplier}/>
                         </Grid>
                     )}
                 </Grid>

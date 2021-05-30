@@ -7,7 +7,7 @@ def hospitalDF(hospitalCsvPath):
     df = pd.read_csv(hospitalCsvPath)
     final = pd.DataFrame()
     final["name"] = df["NAME OF HOSPITALS"]
-    final["verified"] = df["VERIFIED?"] != 'NO'
+    final["verified"] = df["VERIFIED?"].apply(lambda s: s.upper().strip('.').strip(' ')) == 'YES'
     final["type"] = df["TYPE"].fillna('Unknown Institution')
     final["facility"] = df["FACILITY"].fillna('Facilities Not Mention')
     final["contact"] = df["CONTACT NOS"].fillna('Contact Unknown')
@@ -26,7 +26,7 @@ def ambulanceDF(ambulancesCsvPath):
     df = pd.read_csv(ambulancesCsvPath)
     final = pd.DataFrame()
     final["name"] = df["AMBULANCE NAME"]
-    final["verified"] = df["VERIFIED?"] != 'NO'
+    final["verified"] = df["VERIFIED?"].apply(lambda s: s.upper().strip('.').strip(' ')) == 'YES'
     final["type"] = df["TYPE"].fillna('Unknown Institution')
     final["facility"] = df["FACILITY"].fillna('Facilities Not Mention')
     final["contact"] = df["CONTACT NUMBER"].fillna('Contact Unknown')
@@ -43,7 +43,7 @@ def testCenterDF(testCenterCsvPath):
     df = pd.read_csv(testCenterCsvPath)
     final = pd.DataFrame()
     final["name"] = df["NAME OF TEST CENTER"]
-    final["verified"] = df["VERIFIED?"] != 'NO'
+    final["verified"] = df["VERIFIED?"].apply(lambda s: s.upper().strip('.').strip(' ')) == 'YES'
     final["type"] = df["TYPE"].fillna('Unknown')
     final["contact"] = df["CONTACT NUMBERS"].fillna('Contact Unknown')
     final["location"] = df["LOCATION"].fillna('Locality Unknown')
@@ -59,11 +59,29 @@ def oxygenSupplierDF(oxygenSupplierCsvPath):
     df = pd.read_csv(oxygenSupplierCsvPath)
     final = pd.DataFrame()
     final["name"] = df["NAME OF SUPPLIER"]
-    final["verified"] = df["VERIFIED?"] != 'NO'
+    final["verified"] = df["VERIFIED?"].apply(lambda s: s.upper().strip('.').strip(' ')) == 'YES'
     final["contact"] = df["CONTACT NUMBERS"].fillna('Contact Unknown')
     final["location"] = df["LOCATION"].fillna('Locality Unknown')
     final["address"] = df["ADDRESS"].fillna('Address Unknown')
     final["delivery_available"] = df["DELIVERY AVAILABLE"].fillna('Unknown')
+    final["work_hours"] = df["WORK TIME"].fillna('Unknown')
+    final["work_days"] = df["WORK DAYS"].fillna('Unknown')
+    final["notes"] = df['NOTES'].fillna('-')
+    return final
+
+
+def foodDF(foodCsvPath):
+    df = pd.read_csv(foodCsvPath)
+    final = pd.DataFrame()
+    final["name"] = df["NAME OF SUPPLIER"]
+    final["verified"] = df["VERIFIED?"].apply(lambda s: s.upper().strip('.').strip(' ')) == 'YES'
+    final["source"] = df["UNIT TYPE"].fillna('Unknown')
+    final["type"] = df["TYPE"].fillna('Unknown')
+    final["contact"] = df["CONTACT NUMBERS"].fillna('Contact Unknown')
+    final["location"] = df["LOCATION"].fillna('Locality Unknown')
+    final["address"] = df["ADDRESS"].fillna('Address Unknown')
+    final["delivery_available"] = df["DELIVERY AVAILABLE"].fillna('Unknown')
+    final["delivery_areas"] = df["DELIVERY AREAS"].fillna('Unknown')
     final["work_hours"] = df["WORK TIME"].fillna('Unknown')
     final["work_days"] = df["WORK DAYS"].fillna('Unknown')
     final["notes"] = df['NOTES'].fillna('-')
@@ -82,3 +100,6 @@ if __name__ == '__main__':
 
     oxygenSupplier = oxygenSupplierDF('./csv/oxygenSuppliers.csv')
     oxygenSupplier.to_json('./json/oxygenSuppliers.json', orient='records')
+
+    food = foodDF('./csv/food.csv')
+    food.to_json('./json/food.json', orient='records')

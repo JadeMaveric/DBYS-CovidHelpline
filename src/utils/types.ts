@@ -16,7 +16,7 @@ export interface Hospital {
 
 export interface Ambulance {
     name: string;
-    verified: string;
+    verified: boolean;
     type: string;
     facility: string;
     contact: string;
@@ -30,7 +30,7 @@ export interface Ambulance {
 
 export interface TestCenter {
     name: string;
-    verified: string;
+    verified: boolean;
     type: string;
     contact: string;
     location: string;
@@ -43,11 +43,26 @@ export interface TestCenter {
 
 export interface OxygenSupplier {
     name: string;
-    verified: string;
+    verified: boolean;
     contact: string;
     location: string;
     address: string;
     delivery_available: string;
+    work_hours: string;
+    work_days: string;
+    notes: string;
+}
+
+export interface FoodSupplier {
+    name: string;
+    verified: boolean;
+    source: string;
+    type: string;
+    contact: string;
+    location: string;
+    address: string;
+    delivery_available: string;
+    delivery_areas: string;
     work_hours: string;
     work_days: string;
     notes: string;
