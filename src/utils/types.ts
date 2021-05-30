@@ -27,3 +27,16 @@ export interface Ambulance {
     service_areas: string;
     notes: string;
 }
+
+export interface TestCenter {
+    name: string;
+    verified: string;
+    type: string;
+    contact: string;
+    location: string;
+    address: string;
+    home_collection: string;
+    work_hours: string;
+    work_days: string;
+    notes: string;
+}

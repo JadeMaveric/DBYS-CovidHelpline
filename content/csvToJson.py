@@ -5,7 +5,6 @@ import pandas as pd
 
 def hospitalDF(hospitalCsvPath):
     df = pd.read_csv(hospitalCsvPath)
-    df.head()
     final = pd.DataFrame()
     final["name"] = df["NAME OF HOSPITALS"]
     final["verified"] = df["VERIFIED?"] != 'NO'
@@ -25,7 +24,6 @@ def hospitalDF(hospitalCsvPath):
 
 def ambulanceDF(ambulancesCsvPath):
     df = pd.read_csv(ambulancesCsvPath)
-    df.head()
     final = pd.DataFrame()
     final["name"] = df["AMBULANCE NAME"]
     final["verified"] = df["VERIFIED?"] != 'NO'
@@ -41,9 +39,28 @@ def ambulanceDF(ambulancesCsvPath):
     return final
 
 
+def testCenterDF(testCenterCsvPath):
+    df = pd.read_csv(testCenterCsvPath)
+    final = pd.DataFrame()
+    final["name"] = df["NAME OF TEST CENTER"]
+    final["verified"] = df["VERIFIED?"] != 'NO'
+    final["type"] = df["TYPE"].fillna('Unknown Institution')
+    final["contact"] = df["CONTACT NUMBERS"].fillna('Contact Unknown')
+    final["location"] = df["LOCATION"].fillna('Locality Unknown')
+    final["address"] = df["ADDRESS"].fillna('Address Unknown')
+    final["home_collection"] = df["HOME COLLECTION"].fillna('Unknown')
+    final["work_hours"] = df["WORK TIME"].fillna('Unknown')
+    final["work_days"] = df["WORK DAYS"].fillna('Unknown')
+    final["notes"] = df['NOTES'].fillna('-')
+    return final
+
+
 if __name__ == '__main__':
     hospital = hospitalDF('./csv/hospitals.csv')
     hospital.to_json('./json/hospitals.json', orient='records')
 
     ambulance = ambulanceDF('./csv/ambulances.csv')
     ambulance.to_json('./json/ambulances.json', orient='records')
+
+    testCenter = testCenterDF('./csv/testCenters.csv')
+    testCenter.to_json('./json/testCenters.json', orient='records')
