@@ -3,6 +3,7 @@
 import re
 import pandas as pd
 
+#TODO: Add index guard for df
 def hospitalDF(hospitalCsvPath):
     df = pd.read_csv(hospitalCsvPath)
     final = pd.DataFrame()
@@ -117,6 +118,25 @@ def counsellorDF(counsellorCsvPath):
     return final
 
 
+def pharmacyDF(pharmacyCsvPath):
+    df = pd.read_csv(pharmacyCsvPath)
+    final = pd.DataFrame()
+    final["name"] = df["Name"]
+    final["verified"] = df["Verified"].apply(lambda s: s.upper().strip('.').strip(' ')) == 'YES'
+    final["contact"] = df["Contact"].fillna('Contact Unknown').apply(lambda s: s.strip())
+    final["whatsapp"] = df["Any WhatsApp number (to message the list of meds for home delivery)"].fillna('Contact Unknown')
+    final["location"] = df["Location (Main Area + District)"].fillna('Locality Unknown')
+    final["address"] = df["Address"].fillna('Unknown')
+    final["home_delivery"] = df['Home Delivery (YES/NO) '].fillna('-')
+    final["delivery_area"] = df['Delivery Areas'].fillna('-')
+    final["delivery_fee"] = df['Home Delivery Charges'].fillna('-')
+    final["work_hours"] = df["Timings"].fillna('Unknown')
+    final["work_days"] = df["Days "].fillna('Unknown')
+    final["oximeter_available"] = df["Oximeter available (Yes/No) + Price "].fillna('Unknown')
+    final["Remarks (availability of medicines/vitamins - Doxycycline, dolo, Vit C, Vit D, Zinc) + (protective equipment - N95 masks, surgical masks, steam inhaler) + general remarks"] = df["Remarks (availability of medicines/vitamins - Doxycycline, dolo, Vit C, Vit D, Zinc) + (protective equipment - N95 masks, surgical masks, steam inhaler) + general remarks"].fillna('-')
+    return final
+
+
 if __name__ == '__main__':
     hospital = hospitalDF('./csv/hospitals.csv')
     hospital.to_json('./json/hospitals.json', orient='records')
@@ -138,3 +158,6 @@ if __name__ == '__main__':
 
     counsellor = counsellorDF('./csv/counsellors.csv')
     counsellor.to_json('./json/counsellors.json', orient='records')
+
+    pharmacy = pharmacyDF('./csv/pharmacy.csv')
+    pharmacy.to_json('./json/pharmacy.json', orient='records')

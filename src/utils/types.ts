@@ -90,3 +90,19 @@ export interface Counsellor {
     whatsapp: string;
     notes: string;
 }
+
+export interface Pharmacy {
+    name: string;
+    verified: boolean;
+    contact: string;
+    whatsapp: string;
+    location: string;
+    address: string;
+    home_delivery: string;
+    delivery_area: string;
+    delivery_fee: string;
+    work_hours: string;
+    work_days: string;
+    oximeter_available: string;
+    Remarks: string;
+}
