@@ -7,6 +7,8 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import { makeStyles, useTheme, Theme, createStyles } from '@material-ui/core/styles';
 import Link from './Link';
+import { BatteryStd, Business, ChevronLeft, ChevronRight, Home, LocalHospital, LocalPharmacy, LocalShipping, RecordVoiceOver, Restaurant, Storefront } from '@material-ui/icons';
+import { IconButton, ListItemIcon } from '@material-ui/core';
 
 const drawerWidth = 240;
 
@@ -33,8 +35,14 @@ const useStyles = makeStyles((theme: Theme) =>
         display: 'none',
       },
     },
-    // necessary for content to be below app bar
-    toolbar: theme.mixins.toolbar,
+    drawerHeader: {
+      display: 'flex',
+      alignItems: 'center',
+      padding: theme.spacing(0, 1),
+      // necessary for content to be below app bar
+      ...theme.mixins.toolbar,
+      justifyContent: 'flex-end',
+    },
     drawerPaper: {
       width: drawerWidth,
     },
@@ -53,24 +61,46 @@ interface Props {
     name: string,
     link: string
   }[];
+  currentPage: string;
+}
+
+interface ElementMap {
+  [key: string]: JSX.Element;
 }
 
 export default function ResponsiveDrawer(props: Props) {
-  const { window, drawerOpen, toggleDrawer, menuLinks } = props;
+  const { window, drawerOpen, toggleDrawer, menuLinks, currentPage } = props;
   const classes = useStyles();
   const theme = useTheme();
 
+  const menuIcon : ElementMap = {
+    "/": <Home/>,
+    "/hospital": <LocalHospital/>,
+    "/ambulance": <LocalShipping/>,
+    "/testcenter": <Business/>,
+    "/oxygen": <BatteryStd/>,
+    "/food": <Restaurant/>,
+    "/grocery": <Storefront/>,
+    "/counsellor": <RecordVoiceOver/>,
+    "/pharmacy": <LocalPharmacy/>,
+  }
+
   const drawer = (
     <div>
-      <div className={classes.toolbar} />
+      <div className={classes.drawerHeader}>
+        <IconButton onClick={toggleDrawer}>
+          {theme.direction === 'ltr' ? <ChevronLeft/> : <ChevronRight/>}
+        </IconButton>
+      </div>
       <Divider />
       <List>
-        {menuLinks.map(({name, link}, index) => (
-          <ListItem button key={name}>
-            <Link to={link} color="primary">
+        {menuLinks.map(({name, link}) => (
+          <Link key={name} to={link} color={name==currentPage?"secondary":"primary"}>
+            <ListItem button disabled={name==currentPage}>
+              <ListItemIcon>{menuIcon[link]}</ListItemIcon>
               <ListItemText primary={name} />
-            </Link>
-          </ListItem>
+            </ListItem>
+          </Link>
         ))}
       </List>
     </div>
@@ -80,7 +110,6 @@ export default function ResponsiveDrawer(props: Props) {
 
   return (
     <nav className={classes.drawer} aria-label="mailbox folders">
-      {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
       <Hidden implementation="css">
         <Drawer
           container={container}

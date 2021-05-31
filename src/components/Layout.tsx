@@ -51,7 +51,7 @@ export default function Layout( props: Props) {
           <div>
             <CssBaseline/>
             <SearchAppBar title={title} updateSearch={updateSearchTerm} toggleDrawer={handleDrawerToggle}/>
-            <ResponsiveDrawer drawerOpen={mobileOpen} toggleDrawer={handleDrawerToggle} menuLinks={data.site.siteMetadata.menuLinks}/>
+            <ResponsiveDrawer drawerOpen={mobileOpen} toggleDrawer={handleDrawerToggle} menuLinks={data.site.siteMetadata.menuLinks} currentPage={title}/>
             <main>
               {children}
             </main>
