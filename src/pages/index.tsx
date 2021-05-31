@@ -10,12 +10,20 @@ import { Divider, Grid } from '@material-ui/core';
 
 export default function Index(props : any) {
   return (
-    <Layout title="DBYS - Covid Helpline">
+    <Layout title="Home">
       <Container maxWidth="md">
-        <Box my={4} textAlign={"center"}>
+        <Box my={4} textAlign={"justify"}>
           <Typography variant="h4" component="h1" gutterBottom>
             DBYS-Covid Helpline
           </Typography>
+          <Divider />
+          <div>
+            <Typography>
+              This app provides details of services that are helping those affected by Covid in Goa.
+              To get started, click the <span>menu button (☰)</span> and select a service category.
+              Use the search bar to filter relevant service providers. Click the "Learn More" button on the card for more details.
+            </Typography>
+          </div>
           <div>
             <Typography variant="h6" color="error" gutterBottom>
               Last updated: 11:25:00, 21st May 2021
@@ -76,10 +84,13 @@ export default function Index(props : any) {
             </Grid>
           </Grid>
           <Divider />
+          <Typography variant="caption">
+            We would love to here your feedback, suggestion and comments. <a href='https://forms.gle/jUintN5p187sFwz39'>Click Here!</a>
+          </Typography>
           <br/>
           <Typography variant="caption">
-            App developed by <Link to="https://twitter.com/JuliusAlphonso">Julius Alphonso</Link>. 
-            Data sourced from the following <Link to="https://bit.ly/DBYSCovidHelpline">Google Sheet</Link>
+            App developed by <a href="https://twitter.com/JuliusAlphonso">Julius Alphonso</a>. 
+            Data sourced from the following <a href="https://bit.ly/DBYSCovidHelpline">Google Sheet</a>
           </Typography>
         </Box>
       </Container>
