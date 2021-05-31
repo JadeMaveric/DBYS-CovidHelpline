@@ -25,6 +25,10 @@ export default function GrocerySupplierCard(props: CardProps) {
       setOpen(false)
     }
 
+    const handleDialogOpen = () => {
+      setOpen(true)
+    }
+
     const verifiedLabel = grocerySupplier.verified
         ? <Tooltip title="Verified"><VerifiedUser color="secondary"/></Tooltip>
         : <Tooltip title="Not Verified"><WarningRounded color="error"/></Tooltip>
@@ -33,7 +37,7 @@ export default function GrocerySupplierCard(props: CardProps) {
       <>
         <Card>
           <CardContent>
-            <Typography className={classes.wrapIcon} variant="h6" color="textPrimary" noWrap>
+            <Typography className={classes.wrapIcon} onClick={handleDialogOpen} variant="h6" color="textPrimary" noWrap>
             {verifiedLabel} {grocerySupplier.name}
             </Typography>
             <Typography color="textSecondary" gutterBottom noWrap>
@@ -50,7 +54,7 @@ export default function GrocerySupplierCard(props: CardProps) {
             </Typography>
           </CardContent>
           <CardActions>
-            <Button size="small" onClick={()=>setOpen(true)}>Learn More</Button>
+            <Button size="small" onClick={handleDialogOpen}>Learn More</Button>
           </CardActions>
         </Card>
         <InfoDialog open={open} onClose={handleDialogClose} jsonObj={grocerySupplier}/>

@@ -25,6 +25,10 @@ export default function CounsellorCard(props: CardProps) {
       setOpen(false)
     }
 
+    const handleDialogOpen = () => {
+      setOpen(true)
+    }
+
     const verifiedLabel = counsellor.verified
         ? <Tooltip title="Verified"><VerifiedUser color="secondary"/></Tooltip>
         : <Tooltip title="Not Verified"><WarningRounded color="error"/></Tooltip>
@@ -35,7 +39,7 @@ export default function CounsellorCard(props: CardProps) {
       <>
         <Card>
           <CardContent>
-            <Typography className={classes.wrapIcon} variant="h6" color="textPrimary" noWrap>
+            <Typography className={classes.wrapIcon} onClick={handleDialogOpen} variant="h6" color="textPrimary" noWrap>
             {verifiedLabel} {counsellor.name}
             </Typography>
             <Typography color="textSecondary" gutterBottom>
@@ -52,7 +56,7 @@ export default function CounsellorCard(props: CardProps) {
             <Button size="small" onClick={()=>setOpen(true)}>Learn More</Button>
           </CardActions>
         </Card>
-        <InfoDialog open={open} onClose={handleDialogClose} jsonObj={counsellor}/>
+        <InfoDialog open={open} jsonObj={counsellor}/>
       </>
     );
 }

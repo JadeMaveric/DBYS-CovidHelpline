@@ -25,6 +25,10 @@ export default function HospitalCard(props: CardProps) {
       setOpen(false)
     }
 
+    const handleDialogOpen = () => {
+      setOpen(true)
+    }
+
     const verifiedLabel = hospital.verified
         ? <Tooltip title="Verified"><VerifiedUser color="secondary"/></Tooltip>
         : <Tooltip title="Not Verified"><WarningRounded color="error"/></Tooltip>
@@ -33,7 +37,7 @@ export default function HospitalCard(props: CardProps) {
       <>
         <Card>
           <CardContent>
-            <Typography className={classes.wrapIcon} variant="h6" color="textPrimary" noWrap>
+            <Typography className={classes.wrapIcon} onClick={handleDialogOpen} variant="h6" color="textPrimary" noWrap>
             {verifiedLabel} {hospital.name}
             </Typography>
             <Typography color="textSecondary" gutterBottom>
@@ -47,7 +51,7 @@ export default function HospitalCard(props: CardProps) {
             </Typography>
           </CardContent>
           <CardActions>
-            <Button size="small" onClick={()=>setOpen(true)}>Learn More</Button>
+            <Button size="small" onClick={handleDialogOpen}>Learn More</Button>
           </CardActions>
         </Card>
         <InfoDialog open={open} onClose={handleDialogClose} jsonObj={hospital}/>

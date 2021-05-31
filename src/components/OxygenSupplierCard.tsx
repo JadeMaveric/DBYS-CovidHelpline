@@ -25,6 +25,10 @@ export default function OxygenSupplierCard(props: CardProps) {
       setOpen(false)
     }
 
+    const handleDialogOpen = () => {
+      setOpen(true)
+    }
+
     const verifiedLabel = oxygenSupplier.verified
         ? <Tooltip title="Verified"><VerifiedUser color="secondary"/></Tooltip>
         : <Tooltip title="Not Verified"><WarningRounded color="error"/></Tooltip>
@@ -33,7 +37,7 @@ export default function OxygenSupplierCard(props: CardProps) {
       <>
         <Card>
           <CardContent>
-            <Typography className={classes.wrapIcon} variant="h6" color="textPrimary" noWrap>
+            <Typography className={classes.wrapIcon} onClick={handleDialogOpen} variant="h6" color="textPrimary" noWrap>
             {verifiedLabel} {oxygenSupplier.name}
             </Typography>
             <br/>
@@ -51,7 +55,7 @@ export default function OxygenSupplierCard(props: CardProps) {
             </Typography>
           </CardContent>
           <CardActions>
-            <Button size="small" onClick={()=>setOpen(true)}>Learn More</Button>
+            <Button size="small" onClick={handleDialogOpen}>Learn More</Button>
           </CardActions>
         </Card>
         <InfoDialog open={open} onClose={handleDialogClose} jsonObj={oxygenSupplier}/>
