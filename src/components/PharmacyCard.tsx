@@ -37,7 +37,7 @@ export default function PharmacyCard(props: CardProps) {
             {verifiedLabel} {pharmacy.name}
             </Typography>
             <Typography color="textSecondary" gutterBottom noWrap>
-              {pharmacy.delivery_fee}
+              Home Delivery: {pharmacy.home_delivery}
             </Typography>
             <Typography className={classes.wrapIcon} gutterBottom noWrap>
               <LocationOn color="primary"/> {pharmacy.location}
