@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Box, Grid, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import Layout from '../components/Layout';
 import SearchAppBar from '../components/SearchAppBar';
 import HospitalCard from '../components/HospitalCard';
 import JSONData from '../../content/json/hospitals.json';
@@ -21,8 +22,7 @@ export default function HospitalView() {
     const hospitals = keyworkFilter(JSONData, searchTerm) as Hospital[]
 
     return (
-        <>
-            <SearchAppBar title="Hospitals + Care Centers" updateSearch={updateSearchTerm}/>
+        <Layout title={"Hospitals + Care Centers"} updateSearchTerm={updateSearchTerm}>
             <Box className={classes.container}>
                 { hospitals.length
                 ? <Grid container spacing={1}>
@@ -35,6 +35,6 @@ export default function HospitalView() {
                 : <Typography variant="h4" color="textSecondary" align="center">No Matching Entries</Typography>
                 }
             </Box>
-        </>
+        </Layout>
     );   
 }

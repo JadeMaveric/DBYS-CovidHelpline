@@ -6,6 +6,7 @@ import CounsellorCard from '../components/CounsellorCard';
 import JSONData from '../../content/json/counsellors.json';
 import keyworkFilter from '../utils/keywordFilter';
 import { Counsellor } from '../utils/types';
+import Layout from '../components/Layout';
 
 const useStyles = makeStyles({
     container: {
@@ -21,8 +22,7 @@ export default function CounsellorView() {
     const counsellors = keyworkFilter(JSONData, searchTerm) as Counsellor[]
 
     return (
-        <>
-            <SearchAppBar title="Counsellors" updateSearch={updateSearchTerm}/>
+        <Layout title={"Counsellors"} updateSearchTerm={updateSearchTerm}>
             <Box className={classes.container}>
                 { counsellors.length
                 ? <Grid container spacing={1}>
@@ -35,6 +35,6 @@ export default function CounsellorView() {
                 : <Typography variant="h4" color="textSecondary" align="center">No Matching Entries</Typography>
                 }
             </Box>
-        </>
+        </Layout>
     );   
 }

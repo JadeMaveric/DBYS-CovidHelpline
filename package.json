@@ -18,5 +18,8 @@
     "build": "gatsby build",
     "serve": "gatsby serve",
     "post-update": "echo \"codesandbox preview only, need an update\" && yarn upgrade --latest"
+  },
+  "devDependencies": {
+    "@types/react-helmet": "^6.1.1"
   }
 }

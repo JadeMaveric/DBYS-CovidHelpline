@@ -6,6 +6,7 @@ import TestCenterCard from '../components/TestCenterCard';
 import JSONData from '../../content/json/testCenters.json';
 import keyworkFilter from '../utils/keywordFilter';
 import { TestCenter } from '../utils/types';
+import Layout from '../components/Layout';
 
 const useStyles = makeStyles({
     container: {
@@ -21,8 +22,7 @@ export default function testCenterView() {
     const testCenters = keyworkFilter(JSONData, searchTerm) as TestCenter[]
 
     return (
-        <>
-            <SearchAppBar title="Test Centers" updateSearch={updateSearchTerm}/>
+        <Layout title={"Test Centers"} updateSearchTerm={updateSearchTerm}>
             <Box className={classes.container}>
                 { testCenters.length
                 ? <Grid container spacing={1}>
@@ -35,6 +35,6 @@ export default function testCenterView() {
                 : <Typography variant="h4" color="textSecondary" align="center">No Matching Entries</Typography>
                 }
             </Box>
-        </>
+        </Layout>
     );   
 }

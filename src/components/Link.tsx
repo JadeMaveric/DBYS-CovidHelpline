@@ -2,7 +2,13 @@ import React from 'react';
 import MuiLink from '@material-ui/core/Link';
 import { Link as GatsbyLink } from 'gatsby';
 
-const Link = React.forwardRef(function Link(props, ref) {
+interface Props {
+  children: any;
+  to: string;
+  color?: "primary" | "secondary";
+}
+
+const Link = React.forwardRef(function Link(props:Props, ref) {
   return <MuiLink component={GatsbyLink} ref={ref} {...props} />;
 });
 

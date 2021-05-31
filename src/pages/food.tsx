@@ -6,6 +6,7 @@ import FoodSupplierCard from '../components/FoodSupplierCard';
 import JSONData from '../../content/json/food.json';
 import keyworkFilter from '../utils/keywordFilter';
 import { FoodSupplier } from '../utils/types';
+import Layout from '../components/Layout';
 
 const useStyles = makeStyles({
     container: {
@@ -21,8 +22,7 @@ export default function FoodSupplierView() {
     const foodSuppliers = keyworkFilter(JSONData, searchTerm) as FoodSupplier[]
 
     return (
-        <>
-            <SearchAppBar title="Food Suppliers" updateSearch={updateSearchTerm}/>
+        <Layout title={"Cooked Food"} updateSearchTerm={updateSearchTerm}>
             <Box className={classes.container}>
                 { foodSuppliers.length
                 ? <Grid container spacing={1}>
@@ -35,6 +35,6 @@ export default function FoodSupplierView() {
                 : <Typography variant="h4" color="textSecondary" align="center">No Matching Entries</Typography>
                 }
             </Box>
-        </>
+        </Layout>
     );   
 }

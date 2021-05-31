@@ -6,6 +6,7 @@ import OxygenSupplierCard from '../components/OxygenSupplierCard';
 import JSONData from '../../content/json/oxygenSuppliers.json';
 import keyworkFilter from '../utils/keywordFilter';
 import { OxygenSupplier } from '../utils/types';
+import Layout from '../components/Layout';
 
 const useStyles = makeStyles({
     container: {
@@ -21,8 +22,7 @@ export default function OxygenSupplierView() {
     const oxygenSuppliers = keyworkFilter(JSONData, searchTerm) as OxygenSupplier[]
 
     return (
-        <>
-            <SearchAppBar title="Test Centers" updateSearch={updateSearchTerm}/>
+        <Layout title={"Oxygen Suppliers"} updateSearchTerm={updateSearchTerm}>
             <Box className={classes.container}>
                 { oxygenSuppliers.length
                 ? <Grid container spacing={1}>
@@ -35,6 +35,6 @@ export default function OxygenSupplierView() {
                 : <Typography variant="h4" color="textSecondary" align="center">No Matching Entries</Typography>
                 }
             </Box>
-        </>
+        </Layout>
     );   
 }

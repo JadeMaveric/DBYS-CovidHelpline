@@ -15,6 +15,46 @@ module.exports = {
     'gatsby-plugin-react-helmet',
   ],
   siteMetadata: {
-    title: 'My page',
+    title: 'DBYS Covid Helpline',
+    description: 'Covid helpline sheet, by the Salesians of Don Bosco. INFORMATION VERIFIED BY OUR VOLUNTEERS ON A DAILY BASIS',
+    keywords: ['Covid', 'Goa'],
+    menuLinks: [
+      {
+        name: 'Home',
+        link: '/'
+      },
+      {
+        name: 'Hospitals + Care Centers',
+        link: '/hospital'
+      },
+      {
+        name: 'Ambulances',
+        link: '/ambulance'
+      },
+      {
+        name: 'Test Centers',
+        link: '/testcenter'
+      },
+      {
+        name: 'Oxygen Suppliers',
+        link: '/oxygen'
+      },
+      {
+        name: 'Cooked Food',
+        link: '/food'
+      },
+      {
+        name: 'Groceries/Kits',
+        link: '/grocery'
+      },
+      {
+        name: 'Counsellors',
+        link: '/counsellor'
+      },
+      {
+        name: 'Pharmacies',
+        link: '/pharmacy'
+      },
+    ]
   },
 };

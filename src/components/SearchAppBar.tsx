@@ -66,12 +66,14 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 interface Props {
-    title: string,
-    updateSearch: React.Dispatch<React.SetStateAction<string>>,
+    title: string;
+    updateSearch?: React.Dispatch<React.SetStateAction<string>>,
+    toggleDrawer: () => void;
 }
 
 export default function SearchAppBar(props: Props) {
   const classes = useStyles();
+  const {title, updateSearch, toggleDrawer} = props;
 
   return (
     <div className={classes.root}>
@@ -82,27 +84,31 @@ export default function SearchAppBar(props: Props) {
             className={classes.menuButton}
             color="inherit"
             aria-label="open drawer"
+            onClick={toggleDrawer}
           >
             <MenuIcon />
           </IconButton>
           <Typography className={classes.title} variant="h6" noWrap>
             {/*TODO: Only use title when on mobile, on desktop use "Search"*/}
-            {props.title}
+            {title}
           </Typography>
-          <div className={classes.search}>
+          {updateSearch
+          ?(<div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
             </div>
             <InputBase
-              placeholder={props.title}
+              placeholder={title}
               classes={{
                 root: classes.inputRoot,
                 input: classes.inputInput,
               }}
               inputProps={{ 'aria-label': 'search' }}
-              onChange={e => props.updateSearch(e.target.value)}
+              onChange={e => updateSearch(e.target.value)}
             />
-          </div>
+          </div>)
+          : null
+          }
         </Toolbar>
       </AppBar>
       <Toolbar />
