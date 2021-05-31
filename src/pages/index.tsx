@@ -65,24 +65,26 @@ export default function Index(props : any) {
               Equipped with the Salesian Preventive System and the Salesian Youth Spirituality we will strive to accompany and walk with the young in our province in actively helping the young to participate in the life, mission and works of the Church and Society. We also seek not only to assist poor youth but to protect them and teach them.
             </Typography>
           </div>
-          <Grid container spacing={3}>
-            <Grid item sm={6}>
-              <Typography color="primary">
-                MISSION IN-CHARGE
-              </Typography>
-              <Typography>
-                Fr. Jason Coelho
-              </Typography>
+          <Box textAlign="center">
+            <Grid container spacing={3}>
+              <Grid item sm={6}>
+                <Typography color="primary">
+                  MISSION IN-CHARGE
+                </Typography>
+                <Typography>
+                  Fr. Jason Coelho
+                </Typography>
+              </Grid>
+              <Grid item sm={6}>
+                <Typography color="primary">
+                  ASSISTED BY
+                </Typography>
+                <Typography gutterBottom>
+                  Fr. Ralin De Souza
+                </Typography>
+              </Grid>
             </Grid>
-            <Grid item sm={6}>
-              <Typography color="primary">
-                ASSISTED BY
-              </Typography>
-              <Typography gutterBottom>
-                Fr. Ralin De Souza
-              </Typography>
-            </Grid>
-          </Grid>
+          </Box>
           <Divider />
           <Typography variant="caption">
             We would love to here your feedback, suggestion and comments. <a href='https://forms.gle/jUintN5p187sFwz39'>Click Here!</a>
