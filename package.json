@@ -2,6 +2,13 @@
   "name": "gatsby",
   "version": "4.0.0",
   "private": true,
+  "scripts": {
+    "develop": "gatsby develop",
+    "build": "gatsby build",
+    "serve": "gatsby serve",
+    "format": "prettier . --write",
+    "lint": "eslint . --fix"
+  },
   "dependencies": {
     "@material-ui/core": "latest",
     "@material-ui/icons": "^4.11.2",
@@ -15,13 +22,11 @@
     "react-dom": "latest",
     "react-helmet": "latest"
   },
-  "scripts": {
-    "develop": "gatsby develop",
-    "build": "gatsby build",
-    "serve": "gatsby serve",
-    "post-update": "echo \"codesandbox preview only, need an update\" && yarn upgrade --latest"
-  },
   "devDependencies": {
-    "@types/react-helmet": "^6.1.1"
+    "@types/react-helmet": "^6.1.1",
+    "@typescript-eslint/eslint-plugin": "^4.26.0",
+    "@typescript-eslint/parser": "^4.26.0",
+    "eslint": "^7.27.0",
+    "prettier": "^2.3.0"
   }
 }
