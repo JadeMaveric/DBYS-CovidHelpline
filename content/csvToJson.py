@@ -3,7 +3,6 @@
 import re
 import pandas as pd
 
-#TODO: Add index guard for df
 def hospitalDF(csvPath):
     try:
         print(f"Processing {csvPath}")
