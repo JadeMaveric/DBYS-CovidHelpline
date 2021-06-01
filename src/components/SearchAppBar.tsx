@@ -71,7 +71,7 @@ interface Props {
     toggleDrawer: () => void;
 }
 
-export default function SearchAppBar(props: Props) {
+const SearchAppBar : React.FC<Props> = (props: Props) => {
   const classes = useStyles();
   const {title, updateSearch, toggleDrawer} = props;
 
@@ -115,3 +115,5 @@ export default function SearchAppBar(props: Props) {
     </div>
   );
 }
+
+export default SearchAppBar;

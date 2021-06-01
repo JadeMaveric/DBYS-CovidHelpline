@@ -16,7 +16,7 @@ interface CardProps {
     oxygenSupplier: OxygenSupplier
 }
 
-export default function OxygenSupplierCard(props: CardProps) {
+const OxygenSupplierCard : React.FC<CardProps> = (props: CardProps) => {
     const { oxygenSupplier } = props;
     const classes = useStyles();
     const [open, setOpen] = useState(false);
@@ -62,3 +62,5 @@ export default function OxygenSupplierCard(props: CardProps) {
       </>
     );
 }
+
+export default OxygenSupplierCard;

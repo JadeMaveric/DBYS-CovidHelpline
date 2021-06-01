@@ -16,7 +16,7 @@ interface CardProps {
     pharmacy: Pharmacy
 }
 
-export default function PharmacyCard(props: CardProps) {
+const PharmacyCard : React.FC<CardProps> = (props: CardProps) => {
     const { pharmacy } = props;
     const classes = useStyles();
     const [open, setOpen] = useState(false);
@@ -61,3 +61,5 @@ export default function PharmacyCard(props: CardProps) {
       </>
     );
 }
+
+export default PharmacyCard;

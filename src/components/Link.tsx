@@ -3,7 +3,7 @@ import MuiLink from '@material-ui/core/Link';
 import { Link as GatsbyLink } from 'gatsby';
 
 interface Props {
-  children: any;
+  children: React.ReactNode;
   to: string;
   color?: "primary" | "secondary";
 }

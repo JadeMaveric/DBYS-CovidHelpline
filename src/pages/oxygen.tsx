@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Box, Grid, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import SearchAppBar from '../components/SearchAppBar';
 import OxygenSupplierCard from '../components/OxygenSupplierCard';
 import JSONData from '../../content/json/oxygenSuppliers.json';
 import keyworkFilter from '../utils/keywordFilter';
@@ -14,12 +13,11 @@ const useStyles = makeStyles({
     }
 })
 
-export default function OxygenSupplierView() {
+const OxygenSupplierView : React.FC = () => {
     const classes = useStyles();
     const [searchTerm, updateSearchTerm] = useState("");
 
-    //@ts-ignore
-    const oxygenSuppliers = keyworkFilter(JSONData, searchTerm) as OxygenSupplier[]
+    const oxygenSuppliers = keyworkFilter(JSONData, searchTerm) as unknown as OxygenSupplier[]
 
     return (
         <Layout title={"Oxygen Suppliers"} updateSearchTerm={updateSearchTerm}>
@@ -38,3 +36,5 @@ export default function OxygenSupplierView() {
         </Layout>
     );   
 }
+
+export default OxygenSupplierView;

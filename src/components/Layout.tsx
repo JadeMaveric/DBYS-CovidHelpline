@@ -1,5 +1,4 @@
 import { CssBaseline } from '@material-ui/core';
-import { ChildFriendlyOutlined } from '@material-ui/icons';
 import { graphql, StaticQuery } from 'gatsby';
 import React, {useState} from 'react';
 import Helmet from 'react-helmet';
@@ -13,7 +12,7 @@ interface Props {
     children: JSX.Element;
 }
 
-export default function Layout( props: Props) {
+const Layout : React.FC<Props> = (props: Props) =>{
     const { children, title, updateSearchTerm } = props;
     const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -60,3 +59,5 @@ export default function Layout( props: Props) {
       )}
     />
   )}
+
+export default Layout;

@@ -68,7 +68,7 @@ interface ElementMap {
   [key: string]: JSX.Element;
 }
 
-export default function ResponsiveDrawer(props: Props) {
+const ResponsiveDrawer : React.FC<Props> = (props: Props) => {
   const { window, drawerOpen, toggleDrawer, menuLinks, currentPage } = props;
   const classes = useStyles();
   const theme = useTheme();
@@ -130,3 +130,5 @@ export default function ResponsiveDrawer(props: Props) {
     </nav>
   );
 }
+
+export default ResponsiveDrawer;

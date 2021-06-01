@@ -16,7 +16,7 @@ interface CardProps {
     grocerySupplier: GrocerySupplier
 }
 
-export default function GrocerySupplierCard(props: CardProps) {
+const GrocerySupplierCard : React.FC<CardProps> = (props: CardProps) => {
     const { grocerySupplier } = props;
     const classes = useStyles();
     const [open, setOpen] = useState(false);
@@ -61,3 +61,5 @@ export default function GrocerySupplierCard(props: CardProps) {
       </>
     );
 }
+
+export default GrocerySupplierCard;

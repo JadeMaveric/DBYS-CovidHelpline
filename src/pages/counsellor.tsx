@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Box, Grid, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import SearchAppBar from '../components/SearchAppBar';
 import CounsellorCard from '../components/CounsellorCard';
 import JSONData from '../../content/json/counsellors.json';
 import keyworkFilter from '../utils/keywordFilter';
@@ -14,12 +13,11 @@ const useStyles = makeStyles({
     }
 })
 
-export default function CounsellorView() {
+const CounsellorView : React.FC = () => {
     const classes = useStyles();
     const [searchTerm, updateSearchTerm] = useState("");
 
-    //@ts-ignore
-    const counsellors = keyworkFilter(JSONData, searchTerm) as Counsellor[]
+    const counsellors = keyworkFilter(JSONData, searchTerm) as unknown  as Counsellor[]
 
     return (
         <Layout title={"Counsellors"} updateSearchTerm={updateSearchTerm}>
@@ -38,3 +36,5 @@ export default function CounsellorView() {
         </Layout>
     );   
 }
+
+export default CounsellorView;

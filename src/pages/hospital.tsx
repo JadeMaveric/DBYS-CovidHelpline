@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Box, Grid, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Layout from '../components/Layout';
-import SearchAppBar from '../components/SearchAppBar';
 import HospitalCard from '../components/HospitalCard';
 import JSONData from '../../content/json/hospitals.json';
 import keyworkFilter from '../utils/keywordFilter';
@@ -14,12 +13,11 @@ const useStyles = makeStyles({
     }
 })
 
-export default function HospitalView() {
+const HospitalView : React.FC = () => {
     const classes = useStyles();
     const [searchTerm, updateSearchTerm] = useState("");
 
-    //@ts-ignore
-    const hospitals = keyworkFilter(JSONData, searchTerm) as Hospital[]
+    const hospitals = keyworkFilter(JSONData, searchTerm) as unknown as Hospital[];
 
     return (
         <Layout title={"Hospitals + Care Centers"} updateSearchTerm={updateSearchTerm}>
@@ -38,3 +36,5 @@ export default function HospitalView() {
         </Layout>
     );   
 }
+
+export default HospitalView;

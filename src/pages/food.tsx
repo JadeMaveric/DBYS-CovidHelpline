@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Box, Grid, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import SearchAppBar from '../components/SearchAppBar';
 import FoodSupplierCard from '../components/FoodSupplierCard';
 import JSONData from '../../content/json/food.json';
 import keyworkFilter from '../utils/keywordFilter';
@@ -14,12 +13,11 @@ const useStyles = makeStyles({
     }
 })
 
-export default function FoodSupplierView() {
+const FoodSupplierView : React.FC = () => {
     const classes = useStyles();
     const [searchTerm, updateSearchTerm] = useState("");
 
-    //@ts-ignore
-    const foodSuppliers = keyworkFilter(JSONData, searchTerm) as FoodSupplier[]
+    const foodSuppliers = keyworkFilter(JSONData, searchTerm) as unknown as FoodSupplier[]
 
     return (
         <Layout title={"Cooked Food"} updateSearchTerm={updateSearchTerm}>
@@ -38,3 +36,5 @@ export default function FoodSupplierView() {
         </Layout>
     );   
 }
+
+export default FoodSupplierView;

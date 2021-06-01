@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Box, Grid, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import SearchAppBar from '../components/SearchAppBar';
 import AmbulanceCard from '../components/AmbulanceCard';
 import JSONData from '../../content/json/ambulances.json';
 import keyworkFilter from '../utils/keywordFilter';
@@ -14,12 +13,11 @@ const useStyles = makeStyles({
     }
 })
 
-export default function AmbulanceView() {
+const AmbulanceView : React.FC = () => {
     const classes = useStyles();
     const [searchTerm, updateSearchTerm] = useState("");
 
-    //@ts-ignore
-    const ambulances = keyworkFilter(JSONData, searchTerm) as Ambulance[]
+    const ambulances = keyworkFilter(JSONData, searchTerm) as unknown as Ambulance[]
 
     return (
         <Layout title={"Ambulances"} updateSearchTerm={updateSearchTerm}>
@@ -38,3 +36,5 @@ export default function AmbulanceView() {
         </Layout>
     );   
 }
+
+export default AmbulanceView;

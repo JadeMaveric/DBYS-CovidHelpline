@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Box, Grid, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import SearchAppBar from '../components/SearchAppBar';
 import PharmacyCard from '../components/PharmacyCard';
 import JSONData from '../../content/json/pharmacy.json';
 import keyworkFilter from '../utils/keywordFilter';
@@ -14,12 +13,11 @@ const useStyles = makeStyles({
     }
 })
 
-export default function PharmacyView() {
+const PharmacyView : React.FC = () => {
     const classes = useStyles();
     const [searchTerm, updateSearchTerm] = useState("");
 
-    //@ts-ignore
-    const pharmacys = keyworkFilter(JSONData, searchTerm) as Pharmacy[]
+    const pharmacys = keyworkFilter(JSONData, searchTerm) as unknown as Pharmacy[]
 
     return (
         <Layout title={"Pharmacies"} updateSearchTerm={updateSearchTerm}>
@@ -38,3 +36,5 @@ export default function PharmacyView() {
         </Layout>
     );   
 }
+
+export default PharmacyView;

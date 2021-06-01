@@ -16,7 +16,7 @@ interface CardProps {
     counsellor: Counsellor
 }
 
-export default function CounsellorCard(props: CardProps) {
+const CounsellorCard : React.FC<CardProps> = (props: CardProps) => {
     const { counsellor } = props;
     const classes = useStyles();
     const [open, setOpen] = useState(false);
@@ -56,7 +56,9 @@ export default function CounsellorCard(props: CardProps) {
             <Button size="small" onClick={()=>setOpen(true)}>Learn More</Button>
           </CardActions>
         </Card>
-        <InfoDialog open={open} jsonObj={counsellor}/>
+        <InfoDialog open={open} onClose={handleDialogClose} jsonObj={counsellor}/>
       </>
     );
 }
+
+export default CounsellorCard;

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Box, Grid, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import SearchAppBar from '../components/SearchAppBar';
 import TestCenterCard from '../components/TestCenterCard';
 import JSONData from '../../content/json/testCenters.json';
 import keyworkFilter from '../utils/keywordFilter';
@@ -14,12 +13,11 @@ const useStyles = makeStyles({
     }
 })
 
-export default function testCenterView() {
+const TestCenterView : React.FC = () => {
     const classes = useStyles();
     const [searchTerm, updateSearchTerm] = useState("");
 
-    //@ts-ignore
-    const testCenters = keyworkFilter(JSONData, searchTerm) as TestCenter[]
+    const testCenters = keyworkFilter(JSONData, searchTerm) as unknown as TestCenter[]
 
     return (
         <Layout title={"Test Centers"} updateSearchTerm={updateSearchTerm}>
@@ -38,3 +36,5 @@ export default function testCenterView() {
         </Layout>
     );   
 }
+
+export default TestCenterView;

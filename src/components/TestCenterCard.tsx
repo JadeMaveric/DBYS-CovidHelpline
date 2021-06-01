@@ -16,7 +16,7 @@ interface CardProps {
     testCenter: TestCenter
 }
 
-export default function TestCenterCard(props: CardProps) {
+const TestCenterCard : React.FC<CardProps> = (props: CardProps) => {
     const { testCenter } = props;
     const classes = useStyles();
     const [open, setOpen] = useState(false);
@@ -61,3 +61,5 @@ export default function TestCenterCard(props: CardProps) {
       </>
     );
 }
+
+export default TestCenterCard;

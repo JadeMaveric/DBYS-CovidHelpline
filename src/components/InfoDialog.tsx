@@ -2,7 +2,6 @@ import React from 'react';
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 import { Typography, Dialog, DialogTitle, IconButton, Container } from '@material-ui/core';
 import { Close } from '@material-ui/icons';
-import { Hospital } from '../utils/types';
 
 const useStyles = makeStyles((theme: Theme) => 
   createStyles({
@@ -23,7 +22,7 @@ interface DialogProps {
     onClose: () => void,
 }
   
-export default function InfoDialog(props: DialogProps) {
+const InfoDialog : React.FC<DialogProps> = (props: DialogProps) => {
     const { open, jsonObj, onClose } = props;
     const classes = useStyles();
 
@@ -53,3 +52,5 @@ export default function InfoDialog(props: DialogProps) {
         </Dialog>
     );
 }
+
+export default InfoDialog;

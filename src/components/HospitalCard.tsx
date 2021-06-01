@@ -16,7 +16,7 @@ interface CardProps {
     hospital: Hospital
 }
 
-export default function HospitalCard(props: CardProps) {
+const HospitalCard : React.FC<CardProps> = (props: CardProps) => {
     const { hospital } = props;
     const classes = useStyles();
     const [open, setOpen] = useState(false);
@@ -58,3 +58,5 @@ export default function HospitalCard(props: CardProps) {
       </>
     );
 }
+
+export default HospitalCard;

@@ -2,13 +2,10 @@ import React from 'react';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import ProTip from '../components/ProTip';
-import Link from '../components/Link';
-import Copyright from '../components/Copyright';
 import Layout from '../components/Layout';
 import { Divider, Grid } from '@material-ui/core';
 
-export default function Index(props : any) {
+const Index : React.FC = () => {
   return (
     <Layout title="Home">
       <Container maxWidth="md">
@@ -99,3 +96,5 @@ export default function Index(props : any) {
     </Layout>
   );
 }
+
+export default Index;
