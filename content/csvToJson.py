@@ -4,8 +4,16 @@ import re
 import pandas as pd
 
 #TODO: Add index guard for df
-def hospitalDF(hospitalCsvPath):
-    df = pd.read_csv(hospitalCsvPath)
+def hospitalDF(csvPath):
+    try:
+        print(f"Processing {csvPath}")
+        df = pd.read_csv(csvPath)
+        header_guard = (df.index == ["NAME OF HOSPITALS","TYPE","FACILITY","CONTACT NOS","LOCATION","ADDRESS","NO of BEDS","COVID BEDS","OXYGEN BEDS","NODAL OFFICER","CONTACT NUMBER","NOTES","VERIFIED?"]).all()
+        assert header_guard
+    except:
+        print("ERROR: Skipping proccessing...")
+        exit()
+    
     final = pd.DataFrame()
     final["name"] = df["NAME OF HOSPITALS"]
     final["verified"] = df["VERIFIED?"].apply(lambda s: s.upper().strip('.').strip(' ')) == 'YES'
@@ -23,8 +31,16 @@ def hospitalDF(hospitalCsvPath):
     return final
 
 
-def ambulanceDF(ambulancesCsvPath):
-    df = pd.read_csv(ambulancesCsvPath)
+def ambulanceDF(csvPath):
+    try:
+        print(f"Processing {csvPath}")
+        df = pd.read_csv(csvPath)
+        header_guard = (df.index == ["AMBULANCE NAME","TYPE","FACILITY","CONTACT NUMBER","CONTACT NAME","LOCATION","ADDRESS","DISTRICT","SERVICE AREAS","NOTES","VERIFIED?"]).all()
+        assert header_guard
+    except:
+        print("ERROR: Skipping proccessing...")
+        exit()
+
     final = pd.DataFrame()
     final["name"] = df["AMBULANCE NAME"]
     final["verified"] = df["VERIFIED?"].apply(lambda s: s.upper().strip('.').strip(' ')) == 'YES'
@@ -40,8 +56,16 @@ def ambulanceDF(ambulancesCsvPath):
     return final
 
 
-def testCenterDF(testCenterCsvPath):
-    df = pd.read_csv(testCenterCsvPath)
+def testCenterDF(csvPath):
+    try:
+        print(f"Processing {csvPath}")
+        df = pd.read_csv(csvPath)
+        header_guard = (df.index == ["NAME OF TEST CENTER","TYPE","CONTACT NUMBERS","LOCATION","ADDRESS","HOME COLLECTION","WORK TIME","WORK DAYS","NOTES","VERIFIED?"]).all()
+        assert header_guard
+    except:
+        print("ERROR: Skipping proccessing...")
+        exit()
+
     final = pd.DataFrame()
     final["name"] = df["NAME OF TEST CENTER"]
     final["verified"] = df["VERIFIED?"].apply(lambda s: s.upper().strip('.').strip(' ')) == 'YES'
@@ -56,8 +80,16 @@ def testCenterDF(testCenterCsvPath):
     return final
 
 
-def oxygenSupplierDF(oxygenSupplierCsvPath):
-    df = pd.read_csv(oxygenSupplierCsvPath)
+def oxygenSupplierDF(csvPathrCsvPath):
+    try:
+        print(f"Processing {csvPath}")
+        df = pd.csvPath(oxygenSupplierCsvPath)
+        header_guard = (df.index == ["NAME OF SUPPLIER","CONTACT NUMBERS","LOCATION","ADDRESS","DELIVERY AVAILABLE","WORK TIME","WORK DAYS","NOTES","VERIFIED?"]).all()
+        assert header_guard
+    except:
+        print("ERROR: Skipping proccessing...")
+        exit()
+
     final = pd.DataFrame()
     final["name"] = df["NAME OF SUPPLIER"]
     final["verified"] = df["VERIFIED?"].apply(lambda s: s.upper().strip('.').strip(' ')) == 'YES'
@@ -71,8 +103,16 @@ def oxygenSupplierDF(oxygenSupplierCsvPath):
     return final
 
 
-def foodDF(foodCsvPath):
-    df = pd.read_csv(foodCsvPath)
+def foodDF(csvPath):
+    try:
+        print(f"Processing {csvPath}")
+        df = pd.read_csv(csvPath)
+        header_guard = (df.index == ["NAME OF SUPPLIER","UNIT TYPE","CONTACT NUMBERS","LOCATION","TYPE","ADDRESS","DELIVERY AVAILABLE","DELIVERY AREAS","WORK TIME","WORK DAYS","NOTES","VERIFIED?"]).all()
+        assert header_guard
+    except:
+        print("ERROR: Skipping proccessing...")
+        exit()
+
     final = pd.DataFrame()
     final["name"] = df["NAME OF SUPPLIER"]
     final["verified"] = df["VERIFIED?"].apply(lambda s: s.upper().strip('.').strip(' ')) == 'YES'
@@ -89,8 +129,16 @@ def foodDF(foodCsvPath):
     return final
 
 
-def groceryDF(groceryCsvPath):
-    df = pd.read_csv(groceryCsvPath)
+def groceryDF(csvPath):
+    try:
+        print(f"Processing {csvPath}")
+        df = pd.read_csv(csvPath)
+        header_guard = (df.index == ["SUPPLIER","CONTACT","LOCATION","DELIVERY AREA","TIMINGS","DAYS","DELIVERY FEE","NOTES","VERIFIED?"]).all()
+        assert header_guard
+    except:
+        print("ERROR: Skipping proccessing...")
+        exit()
+
     final = pd.DataFrame()
     final["name"] = df["SUPPLIER"]
     final["verified"] = df["VERIFIED?"].apply(lambda s: s.upper().strip('.').strip(' ')) == 'YES'
@@ -104,8 +152,16 @@ def groceryDF(groceryCsvPath):
     return final
 
 
-def counsellorDF(counsellorCsvPath):
-    df = pd.read_csv(counsellorCsvPath)
+def counsellorDF(csvPath):
+    try:
+        print(f"Processing {csvPath}")
+        df = pd.read_csv(csvPath)
+        header_guard = (df.index == ["COUNSELLOR NAME","CONTACT NUMBERS","ORGANISATION/ LOCATION/ TELE-CONSULTATION","DAYS AND TIME AVAILABLE","WHATSAPP AVAILABLE?","CHARGES APPLICABLE","NOTES","VERIFIED?"]).all()
+        assert header_guard
+    except:
+        print("ERROR: Skipping proccessing...")
+        exit()
+
     final = pd.DataFrame()
     final["name"] = df["COUNSELLOR NAME"]
     final["verified"] = df["VERIFIED?"].apply(lambda s: s.upper().strip('.').strip(' ')) == 'YES'
@@ -118,8 +174,16 @@ def counsellorDF(counsellorCsvPath):
     return final
 
 
-def pharmacyDF(pharmacyCsvPath):
-    df = pd.read_csv(pharmacyCsvPath)
+def pharmacyDF(csvPath):
+    try:
+        print(f"Processing {csvPath}")
+        df = pd.read_csv(csvPath)
+        header_guard = (df.index == ["Name","Location (Main Area + District)","Address","Days ","Timings","Contact","Home Delivery (YES/NO) ","Delivery Areas","Home Delivery Charges","Any WhatsApp number (to message the list of meds for home delivery)","Oximeter available (Yes/No) + Price ","Remarks (availability of medicines/vitamins - Doxycycline, dolo, Vit C, Vit D, Zinc) + (protective equipment - N95 masks, surgical masks, steam inhaler) + general remarks","Verified"]).all()
+        assert header_guard
+    except:
+        print("ERROR: Skipping proccessing...")
+        exit()
+
     final = pd.DataFrame()
     final["name"] = df["Name"]
     final["verified"] = df["Verified"].apply(lambda s: s.upper().strip('.').strip(' ')) == 'YES'
