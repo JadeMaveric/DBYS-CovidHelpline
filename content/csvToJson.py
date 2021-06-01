@@ -7,10 +7,16 @@ def hospitalDF(csvPath):
     try:
         print(f"Processing {csvPath}")
         df = pd.read_csv(csvPath)
-        header_guard = (df.index == ["NAME OF HOSPITALS","TYPE","FACILITY","CONTACT NOS","LOCATION","ADDRESS","NO of BEDS","COVID BEDS","OXYGEN BEDS","NODAL OFFICER","CONTACT NUMBER","NOTES","VERIFIED?"]).all()
+        header_guard = (df.columns == ["NAME OF HOSPITALS","TYPE","FACILITY","CONTACT NOS","LOCATION","ADDRESS","NO of BEDS","COVID BEDS","OXYGEN BEDS","NODAL OFFICER","CONTACT NUMBER","NOTES","VERIFIED?"]).all()
         assert header_guard
-    except:
-        print("ERROR: Skipping proccessing...")
+    except FileNotFoundError:
+        print("ERROR: File not found")
+        exit()
+    except ValueError:
+        print("ERROR: Number of attributes has changed")
+        exit()
+    except AssertionError:
+        print("ERROR: Some headers have changed")
         exit()
     
     final = pd.DataFrame()
@@ -34,10 +40,16 @@ def ambulanceDF(csvPath):
     try:
         print(f"Processing {csvPath}")
         df = pd.read_csv(csvPath)
-        header_guard = (df.index == ["AMBULANCE NAME","TYPE","FACILITY","CONTACT NUMBER","CONTACT NAME","LOCATION","ADDRESS","DISTRICT","SERVICE AREAS","NOTES","VERIFIED?"]).all()
+        header_guard = (df.columns == ["AMBULANCE NAME","TYPE","FACILITY","CONTACT NUMBER","CONTACT NAME","LOCATION","ADDRESS","DISTRICT","SERVICE AREAS","NOTES","VERIFIED?"]).all()
         assert header_guard
-    except:
-        print("ERROR: Skipping proccessing...")
+    except FileNotFoundError:
+        print("ERROR: File not found")
+        exit()
+    except ValueError:
+        print("ERROR: Number of attributes has changed")
+        exit()
+    except AssertionError:
+        print("ERROR: Some headers have changed")
         exit()
 
     final = pd.DataFrame()
@@ -59,10 +71,16 @@ def testCenterDF(csvPath):
     try:
         print(f"Processing {csvPath}")
         df = pd.read_csv(csvPath)
-        header_guard = (df.index == ["NAME OF TEST CENTER","TYPE","CONTACT NUMBERS","LOCATION","ADDRESS","HOME COLLECTION","WORK TIME","WORK DAYS","NOTES","VERIFIED?"]).all()
+        header_guard = (df.columns == ["NAME OF TEST CENTER","TYPE","CONTACT NUMBERS","LOCATION","ADDRESS","HOME COLLECTION","WORK TIME","WORK DAYS","NOTES","VERIFIED?"]).all()
         assert header_guard
-    except:
-        print("ERROR: Skipping proccessing...")
+    except FileNotFoundError:
+        print("ERROR: File not found")
+        exit()
+    except ValueError:
+        print("ERROR: Number of attributes has changed")
+        exit()
+    except AssertionError:
+        print("ERROR: Some headers have changed")
         exit()
 
     final = pd.DataFrame()
@@ -79,14 +97,20 @@ def testCenterDF(csvPath):
     return final
 
 
-def oxygenSupplierDF(csvPathrCsvPath):
+def oxygenSupplierDF(csvPath):
     try:
         print(f"Processing {csvPath}")
-        df = pd.csvPath(oxygenSupplierCsvPath)
-        header_guard = (df.index == ["NAME OF SUPPLIER","CONTACT NUMBERS","LOCATION","ADDRESS","DELIVERY AVAILABLE","WORK TIME","WORK DAYS","NOTES","VERIFIED?"]).all()
+        df = pd.read_csv(csvPath)
+        header_guard = (df.columns == ["NAME OF SUPPLIER","CONTACT NUMBERS","LOCATION","ADDRESS","DELIVERY AVAILABLE","WORK TIME","WORK DAYS","NOTES","VERIFIED?"]).all()
         assert header_guard
-    except:
-        print("ERROR: Skipping proccessing...")
+    except FileNotFoundError:
+        print("ERROR: File not found")
+        exit()
+    except ValueError:
+        print("ERROR: Number of attributes has changed")
+        exit()
+    except AssertionError:
+        print("ERROR: Some headers have changed")
         exit()
 
     final = pd.DataFrame()
@@ -106,10 +130,16 @@ def foodDF(csvPath):
     try:
         print(f"Processing {csvPath}")
         df = pd.read_csv(csvPath)
-        header_guard = (df.index == ["NAME OF SUPPLIER","UNIT TYPE","CONTACT NUMBERS","LOCATION","TYPE","ADDRESS","DELIVERY AVAILABLE","DELIVERY AREAS","WORK TIME","WORK DAYS","NOTES","VERIFIED?"]).all()
+        header_guard = (df.columns == ["NAME OF SUPPLIER","UNIT TYPE","CONTACT NUMBERS","LOCATION","TYPE","ADDRESS","DELIVERY AVAILABLE","DELIVERY AREAS","WORK TIME","WORK DAYS","NOTES","VERIFIED?"]).all()
         assert header_guard
-    except:
-        print("ERROR: Skipping proccessing...")
+    except FileNotFoundError:
+        print("ERROR: File not found")
+        exit()
+    except ValueError:
+        print("ERROR: Number of attributes has changed")
+        exit()
+    except AssertionError:
+        print("ERROR: Some headers have changed")
         exit()
 
     final = pd.DataFrame()
@@ -132,10 +162,16 @@ def groceryDF(csvPath):
     try:
         print(f"Processing {csvPath}")
         df = pd.read_csv(csvPath)
-        header_guard = (df.index == ["SUPPLIER","CONTACT","LOCATION","DELIVERY AREA","TIMINGS","DAYS","DELIVERY FEE","NOTES","VERIFIED?"]).all()
+        header_guard = (df.columns == ["SUPPLIER","CONTACT","LOCATION","DELIVERY AREA","TIMINGS","DAYS","DELIVERY FEE","NOTES","VERIFIED?"]).all()
         assert header_guard
-    except:
-        print("ERROR: Skipping proccessing...")
+    except FileNotFoundError:
+        print("ERROR: File not found")
+        exit()
+    except ValueError:
+        print("ERROR: Number of attributes has changed")
+        exit()
+    except AssertionError:
+        print("ERROR: Some headers have changed")
         exit()
 
     final = pd.DataFrame()
@@ -155,10 +191,16 @@ def counsellorDF(csvPath):
     try:
         print(f"Processing {csvPath}")
         df = pd.read_csv(csvPath)
-        header_guard = (df.index == ["COUNSELLOR NAME","CONTACT NUMBERS","ORGANISATION/ LOCATION/ TELE-CONSULTATION","DAYS AND TIME AVAILABLE","WHATSAPP AVAILABLE?","CHARGES APPLICABLE","NOTES","VERIFIED?"]).all()
+        header_guard = (df.columns == ["COUNSELLOR NAME","CONTACT NUMBERS","ORGANISATION/ LOCATION/ TELE-CONSULTATION","DAYS AND TIME AVAILABLE","WHATSAPP AVAILABLE?","CHARGES APPLICABLE","NOTES","VERIFIED?"]).all()
         assert header_guard
-    except:
-        print("ERROR: Skipping proccessing...")
+    except FileNotFoundError:
+        print("ERROR: File not found")
+        exit()
+    except ValueError:
+        print("ERROR: Number of attributes has changed")
+        exit()
+    except AssertionError:
+        print("ERROR: Some headers have changed")
         exit()
 
     final = pd.DataFrame()
@@ -177,10 +219,16 @@ def pharmacyDF(csvPath):
     try:
         print(f"Processing {csvPath}")
         df = pd.read_csv(csvPath)
-        header_guard = (df.index == ["Name","Location (Main Area + District)","Address","Days ","Timings","Contact","Home Delivery (YES/NO) ","Delivery Areas","Home Delivery Charges","Any WhatsApp number (to message the list of meds for home delivery)","Oximeter available (Yes/No) + Price ","Remarks (availability of medicines/vitamins - Doxycycline, dolo, Vit C, Vit D, Zinc) + (protective equipment - N95 masks, surgical masks, steam inhaler) + general remarks","Verified"]).all()
+        header_guard = (df.columns == ["Name","Location (Main Area + District)","Address","Days ","Timings","Contact","Home Delivery (YES/NO) ","Delivery Areas","Home Delivery Charges","Any WhatsApp number (to message the list of meds for home delivery)","Oximeter available (Yes/No) + Price ","Remarks (availability of medicines/vitamins - Doxycycline, dolo, Vit C, Vit D, Zinc) + (protective equipment - N95 masks, surgical masks, steam inhaler) + general remarks","Verified"]).all()
         assert header_guard
-    except:
-        print("ERROR: Skipping proccessing...")
+    except FileNotFoundError:
+        print("ERROR: File not found")
+        exit()
+    except ValueError:
+        print("ERROR: Number of attributes has changed")
+        exit()
+    except AssertionError:
+        print("ERROR: Some headers have changed")
         exit()
 
     final = pd.DataFrame()
@@ -201,26 +249,26 @@ def pharmacyDF(csvPath):
 
 
 if __name__ == '__main__':
-    hospital = hospitalDF('./csv/hospitals.csv')
-    hospital.to_json('./json/hospitals.json', orient='records')
+    hospital = hospitalDF('./content/csv/hospitals.csv')
+    hospital.to_json('./content/json/hospitals.json', orient='records')
 
-    ambulance = ambulanceDF('./csv/ambulances.csv')
-    ambulance.to_json('./json/ambulances.json', orient='records')
+    ambulance = ambulanceDF('./content/csv/ambulances.csv')
+    ambulance.to_json('./content/json/ambulances.json', orient='records')
 
-    testCenter = testCenterDF('./csv/testCenters.csv')
-    testCenter.to_json('./json/testCenters.json', orient='records')
+    testCenter = testCenterDF('./content/csv/testCenters.csv')
+    testCenter.to_json('./content/json/testCenters.json', orient='records')
 
-    oxygenSupplier = oxygenSupplierDF('./csv/oxygenSuppliers.csv')
-    oxygenSupplier.to_json('./json/oxygenSuppliers.json', orient='records')
+    oxygenSupplier = oxygenSupplierDF('./content/csv/oxygenSuppliers.csv')
+    oxygenSupplier.to_json('./content/json/oxygenSuppliers.json', orient='records')
 
-    food = foodDF('./csv/food.csv')
-    food.to_json('./json/food.json', orient='records')
+    food = foodDF('./content/csv/food.csv')
+    food.to_json('./content/json/food.json', orient='records')
 
-    grocery = groceryDF('./csv/grocery.csv')
-    grocery.to_json('./json/grocery.json', orient='records')
+    grocery = groceryDF('./content/csv/grocery.csv')
+    grocery.to_json('./content/json/grocery.json', orient='records')
 
-    counsellor = counsellorDF('./csv/counsellors.csv')
-    counsellor.to_json('./json/counsellors.json', orient='records')
+    counsellor = counsellorDF('./content/csv/counsellors.csv')
+    counsellor.to_json('./content/json/counsellors.json', orient='records')
 
-    pharmacy = pharmacyDF('./csv/pharmacy.csv')
-    pharmacy.to_json('./json/pharmacy.json', orient='records')
+    pharmacy = pharmacyDF('./content/csv/pharmacy.csv')
+    pharmacy.to_json('./content/json/pharmacy.json', orient='records')

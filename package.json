@@ -6,6 +6,7 @@
     "develop": "gatsby develop",
     "build": "gatsby build",
     "serve": "gatsby serve",
+    "makejson": "python content/csvToJson.py && npx prettier --write content/json",
     "format": "prettier . --write",
     "lint": "eslint . --fix",
     "prepare": "husky install"
