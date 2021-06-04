@@ -3,7 +3,8 @@ import { graphql, StaticQuery } from "gatsby";
 import React, { useState } from "react";
 import Helmet from "react-helmet";
 import ResponsiveDrawer from "./ResponsiveDrawer";
-import SearchAppBar from "./SearchAppBar";
+import AppBar from "./CustomAppBar";
+import SearchBar from "./SearchBar";
 
 interface Props {
   title: string;
@@ -50,7 +51,7 @@ const Layout: React.FC<Props> = (props: Props) => {
             ]}
           ></Helmet>
           <Container maxWidth="md">
-            <SearchAppBar
+            <AppBar
               title={title}
               updateSearch={updateSearchTerm}
               toggleDrawer={handleDrawerToggle}
@@ -61,6 +62,7 @@ const Layout: React.FC<Props> = (props: Props) => {
               menuLinks={data.site.siteMetadata.menuLinks}
               currentPage={title}
             />
+            {(updateSearchTerm ? <SearchBar queryHandler={(s) => updateSearchTerm(s)}/> : null)}
             <main>{children}</main>
           </Container>
         </>
