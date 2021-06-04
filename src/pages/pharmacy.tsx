@@ -28,12 +28,7 @@ const PharmacyView: React.FC = () => {
         {pharmacys.length ? (
           <Grid container spacing={1}>
             {pharmacys.map((pharmacy, index) => (
-              <Grid
-                item
-                key={`foodSupplier_${index}`}
-                sm={6}
-                xs={12}
-              >
+              <Grid item key={`foodSupplier_${index}`} sm={6} xs={12}>
                 <PharmacyCard pharmacy={pharmacy} />
               </Grid>
             ))}

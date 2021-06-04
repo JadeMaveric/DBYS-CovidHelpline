@@ -62,7 +62,9 @@ const Layout: React.FC<Props> = (props: Props) => {
               menuLinks={data.site.siteMetadata.menuLinks}
               currentPage={title}
             />
-            {(updateSearchTerm ? <SearchBar queryHandler={(s) => updateSearchTerm(s)}/> : null)}
+            {updateSearchTerm ? (
+              <SearchBar queryHandler={(s) => updateSearchTerm(s)} />
+            ) : null}
             <main>{children}</main>
           </Container>
         </>

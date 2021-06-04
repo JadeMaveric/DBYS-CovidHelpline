@@ -28,12 +28,7 @@ const TestCenterView: React.FC = () => {
         {testCenters.length ? (
           <Grid container spacing={1}>
             {testCenters.map((testCenter, index) => (
-              <Grid
-                item
-                key={`testcenter_${index}`}
-                sm={6}
-                xs={12}
-              >
+              <Grid item key={`testcenter_${index}`} sm={6} xs={12}>
                 <TestCenterCard testCenter={testCenter} />
               </Grid>
             ))}

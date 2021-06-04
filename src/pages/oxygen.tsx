@@ -28,12 +28,7 @@ const OxygenSupplierView: React.FC = () => {
         {oxygenSuppliers.length ? (
           <Grid container spacing={1}>
             {oxygenSuppliers.map((oxygenSupplier, index) => (
-              <Grid
-                item
-                key={`oxygensupplier_${index}`}
-                sm={6}
-                xs={12}
-              >
+              <Grid item key={`oxygensupplier_${index}`} sm={6} xs={12}>
                 <OxygenSupplierCard oxygenSupplier={oxygenSupplier} />
               </Grid>
             ))}

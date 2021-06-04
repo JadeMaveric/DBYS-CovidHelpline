@@ -28,12 +28,7 @@ const FoodSupplierView: React.FC = () => {
         {foodSuppliers.length ? (
           <Grid container spacing={1}>
             {foodSuppliers.map((foodSupplier, index) => (
-              <Grid
-                item
-                key={`foodSupplier_${index}`}
-                sm={6}
-                xs={12}
-              >
+              <Grid item key={`foodSupplier_${index}`} sm={6} xs={12}>
                 <FoodSupplierCard foodSupplier={foodSupplier} />
               </Grid>
             ))}

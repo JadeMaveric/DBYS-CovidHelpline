@@ -28,12 +28,7 @@ const CounsellorView: React.FC = () => {
         {counsellors.length ? (
           <Grid container spacing={1}>
             {counsellors.map((counsellor, index) => (
-              <Grid
-                item
-                key={`counsellor_${index}`}
-                sm={6}
-                xs={12}
-              >
+              <Grid item key={`counsellor_${index}`} sm={6} xs={12}>
                 <CounsellorCard counsellor={counsellor} />
               </Grid>
             ))}

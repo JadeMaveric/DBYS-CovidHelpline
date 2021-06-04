@@ -28,12 +28,7 @@ const AmbulanceView: React.FC = () => {
         {ambulances.length ? (
           <Grid container spacing={1}>
             {ambulances.map((ambulance, index) => (
-              <Grid
-                item
-                key={`ambulance_${index}`}
-                sm={6}
-                xs={12}
-              >
+              <Grid item key={`ambulance_${index}`} sm={6} xs={12}>
                 <AmbulanceCard ambulance={ambulance} />
               </Grid>
             ))}
