@@ -69,6 +69,10 @@ module.exports = {
         name: "Pharmacies",
         link: "/pharmacy",
       },
+      {
+        name: "About",
+        link: "/about",
+      }
     ],
   },
 };

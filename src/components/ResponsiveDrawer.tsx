@@ -24,6 +24,7 @@ import {
   RecordVoiceOver,
   Restaurant,
   Storefront,
+  Info,
 } from "@material-ui/icons";
 import { IconButton, ListItemIcon } from "@material-ui/core";
 
@@ -100,6 +101,7 @@ const ResponsiveDrawer: React.FC<Props> = (props: Props) => {
     "/grocery": <Storefront />,
     "/counsellor": <RecordVoiceOver />,
     "/pharmacy": <LocalPharmacy />,
+    "/about": <Info />,
   };
 
   const drawer = (
