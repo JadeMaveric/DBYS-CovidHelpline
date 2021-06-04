@@ -13,7 +13,7 @@ import { VerifiedUser, WarningRounded, LocationOn } from "@material-ui/icons";
 import InfoDialog from "./InfoDialog";
 import { TestCenter } from "../utils/types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPhoneAlt } from "@fortawesome/free-solid-svg-icons";
+import { faPhoneAlt, faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 
 const useStyles = makeStyles({
   wrapIcon: {
@@ -44,7 +44,7 @@ const TestCenterCard: React.FC<CardProps> = (props: CardProps) => {
 
   const verifiedLabel = testCenter.verified ? (
     <Tooltip title="Verified">
-      <VerifiedUser color="secondary" />
+      <FontAwesomeIcon icon={faCheckCircle} color={"#19857b"} />
     </Tooltip>
   ) : (
     <Tooltip title="Not Verified">
@@ -57,12 +57,10 @@ const TestCenterCard: React.FC<CardProps> = (props: CardProps) => {
       <Card>
         <CardContent onClick={handleDialogOpen}>
           <Typography
-            className={classes.wrapIcon}
             variant="h6"
             color="textPrimary"
-            noWrap
           >
-            {verifiedLabel} {testCenter.name}
+            {testCenter.name} {verifiedLabel}
           </Typography>
           <Typography color="textSecondary" gutterBottom>
             {testCenter.type}

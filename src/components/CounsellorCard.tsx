@@ -9,11 +9,11 @@ import {
   Tooltip,
   Typography,
 } from "@material-ui/core";
-import { VerifiedUser, WarningRounded, LocationOn } from "@material-ui/icons";
+import { WarningRounded, LocationOn } from "@material-ui/icons";
 import InfoDialog from "./InfoDialog";
 import { Counsellor } from "../utils/types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPhoneAlt } from "@fortawesome/free-solid-svg-icons";
+import { faPhoneAlt, faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 
 const useStyles = makeStyles({
@@ -45,7 +45,7 @@ const CounsellorCard: React.FC<CardProps> = (props: CardProps) => {
 
   const verifiedLabel = counsellor.verified ? (
     <Tooltip title="Verified">
-      <VerifiedUser color="secondary" />
+      <FontAwesomeIcon icon={faCheckCircle} color={"#19857b"} />
     </Tooltip>
   ) : (
     <Tooltip title="Not Verified">
@@ -60,12 +60,10 @@ const CounsellorCard: React.FC<CardProps> = (props: CardProps) => {
       <Card>
         <CardContent onClick={handleDialogOpen}>
           <Typography
-            className={classes.wrapIcon}
             variant="h6"
             color="textPrimary"
-            noWrap
           >
-            {verifiedLabel} {counsellor.name}
+            {counsellor.name} {verifiedLabel}
           </Typography>
           <Typography className={classes.wrapIcon} gutterBottom>
             <LocationOn color="primary" /> {counsellor.location}

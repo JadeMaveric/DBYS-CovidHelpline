@@ -9,11 +9,11 @@ import {
   Tooltip,
   Typography,
 } from "@material-ui/core";
-import { VerifiedUser, WarningRounded, LocationOn } from "@material-ui/icons";
+import { WarningRounded, LocationOn } from "@material-ui/icons";
 import InfoDialog from "./InfoDialog";
 import { OxygenSupplier } from "../utils/types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPhoneAlt } from "@fortawesome/free-solid-svg-icons";
+import { faPhoneAlt, faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 
 const useStyles = makeStyles({
   wrapIcon: {
@@ -44,7 +44,7 @@ const OxygenSupplierCard: React.FC<CardProps> = (props: CardProps) => {
 
   const verifiedLabel = oxygenSupplier.verified ? (
     <Tooltip title="Verified">
-      <VerifiedUser color="secondary" />
+      <FontAwesomeIcon icon={faCheckCircle} color={"#19857b"} />
     </Tooltip>
   ) : (
     <Tooltip title="Not Verified">
@@ -57,14 +57,11 @@ const OxygenSupplierCard: React.FC<CardProps> = (props: CardProps) => {
       <Card>
         <CardContent onClick={handleDialogOpen}>
           <Typography
-            className={classes.wrapIcon}
             variant="h6"
             color="textPrimary"
-            noWrap
           >
-            {verifiedLabel} {oxygenSupplier.name}
+            {oxygenSupplier.name} {verifiedLabel}
           </Typography>
-          <br />
           <Typography className={classes.wrapIcon} gutterBottom>
             <LocationOn color="primary" /> {oxygenSupplier.location}
           </Typography>

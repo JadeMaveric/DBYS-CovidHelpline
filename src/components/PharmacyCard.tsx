@@ -9,11 +9,11 @@ import {
   Tooltip,
   Typography,
 } from "@material-ui/core";
-import { VerifiedUser, WarningRounded, LocationOn } from "@material-ui/icons";
+import { WarningRounded, LocationOn } from "@material-ui/icons";
 import InfoDialog from "./InfoDialog";
 import { Pharmacy } from "../utils/types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPhoneAlt } from "@fortawesome/free-solid-svg-icons";
+import { faPhoneAlt, faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 
 const useStyles = makeStyles({
@@ -45,7 +45,7 @@ const PharmacyCard: React.FC<CardProps> = (props: CardProps) => {
 
   const verifiedLabel = pharmacy.verified ? (
     <Tooltip title="Verified">
-      <VerifiedUser color="secondary" />
+      <FontAwesomeIcon icon={faCheckCircle} color={"#19857b"} />
     </Tooltip>
   ) : (
     <Tooltip title="Not Verified">
@@ -58,12 +58,10 @@ const PharmacyCard: React.FC<CardProps> = (props: CardProps) => {
       <Card>
         <CardContent onClick={handleDialogOpen}>
           <Typography
-            className={classes.wrapIcon}
             variant="h6"
             color="textPrimary"
-            noWrap
           >
-            {verifiedLabel} {pharmacy.name}
+            {pharmacy.name} {verifiedLabel}
           </Typography>
           <Typography color="textSecondary" gutterBottom noWrap>
             Home Delivery: {pharmacy.home_delivery}
