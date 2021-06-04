@@ -1,4 +1,4 @@
-import { Container } from "@material-ui/core";
+import { Container, Box, Divider, Typography } from "@material-ui/core";
 import { graphql, StaticQuery } from "gatsby";
 import React, { useState } from "react";
 import Helmet from "react-helmet";
@@ -66,6 +66,21 @@ const Layout: React.FC<Props> = (props: Props) => {
               <SearchBar queryHandler={(s) => updateSearchTerm(s)} />
             ) : null}
             <main>{children}</main>
+            <Divider />
+            <Box textAlign="center">
+              <Typography>
+                App developed by&nbsp;
+                <a href="https://twitter.com/JuliusAlphonso">Julius Alphonso</a>
+                . Data sourced from the following{" "}
+                <a href="https://bit.ly/DBYSCovidHelpline">Google Sheet</a>,
+                maintained by&nbsp;
+                <a href="https://www.facebook.com/watch/dbyspanjim/">DBYS</a>
+              </Typography>
+              <Typography>
+                We would love to here your feedback, suggestion and comments.{" "}
+                <a href="https://forms.gle/jUintN5p187sFwz39">Click Here!</a>
+              </Typography>
+            </Box>
           </Container>
         </>
       )}

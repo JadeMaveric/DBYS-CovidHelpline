@@ -87,18 +87,6 @@ const Index: React.FC = () => {
             </Grid>
           </Grid>
         </Box>
-        <Divider />
-        <Typography variant="caption">
-          We would love to here your feedback, suggestion and comments.{" "}
-          <a href="https://forms.gle/jUintN5p187sFwz39">Click Here!</a>
-        </Typography>
-        <br />
-        <Typography variant="caption">
-          App developed by{" "}
-          <a href="https://twitter.com/JuliusAlphonso">Julius Alphonso</a>. Data
-          sourced from the following{" "}
-          <a href="https://bit.ly/DBYSCovidHelpline">Google Sheet</a>
-        </Typography>
       </Box>
     </Layout>
   );
