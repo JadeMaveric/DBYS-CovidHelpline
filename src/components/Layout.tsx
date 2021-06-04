@@ -1,4 +1,4 @@
-import { CssBaseline } from "@material-ui/core";
+import { Container } from "@material-ui/core";
 import { graphql, StaticQuery } from "gatsby";
 import React, { useState } from "react";
 import Helmet from "react-helmet";
@@ -49,8 +49,7 @@ const Layout: React.FC<Props> = (props: Props) => {
               { name: "keywords", content: data.site.siteMetadata.keywords },
             ]}
           ></Helmet>
-          <div>
-            <CssBaseline />
+          <Container maxWidth="md">
             <SearchAppBar
               title={title}
               updateSearch={updateSearchTerm}
@@ -63,7 +62,7 @@ const Layout: React.FC<Props> = (props: Props) => {
               currentPage={title}
             />
             <main>{children}</main>
-          </div>
+          </Container>
         </>
       )}
     />

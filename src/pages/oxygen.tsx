@@ -31,9 +31,6 @@ const OxygenSupplierView: React.FC = () => {
               <Grid
                 item
                 key={`oxygensupplier_${index}`}
-                xl={3}
-                lg={3}
-                md={4}
                 sm={6}
                 xs={12}
               >

@@ -8,7 +8,6 @@ import { Divider, Grid } from "@material-ui/core";
 const Index: React.FC = () => {
   return (
     <Layout title="Home">
-      <Container maxWidth="md">
         <Box my={4} textAlign={"justify"}>
           <Typography variant="h4" component="h1" gutterBottom>
             DBYS-Covid Helpline
@@ -103,7 +102,6 @@ const Index: React.FC = () => {
             <a href="https://bit.ly/DBYSCovidHelpline">Google Sheet</a>
           </Typography>
         </Box>
-      </Container>
     </Layout>
   );
 };
