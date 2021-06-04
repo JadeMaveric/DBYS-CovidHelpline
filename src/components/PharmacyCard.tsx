@@ -49,10 +49,9 @@ const PharmacyCard: React.FC<CardProps> = (props: CardProps) => {
   return (
     <>
       <Card>
-        <CardContent>
+        <CardContent onClick={handleDialogOpen}>
           <Typography
             className={classes.wrapIcon}
-            onClick={handleDialogOpen}
             variant="h6"
             color="textPrimary"
             noWrap

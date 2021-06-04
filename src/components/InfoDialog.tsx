@@ -61,6 +61,8 @@ const InfoDialog: React.FC<DialogProps> = (props: DialogProps) => {
           </Typography>
         </Container>
       ))}
+      {/*TODO: Use padding here, not this awful hack*/}
+      &nbsp;
     </Dialog>
   );
 };
