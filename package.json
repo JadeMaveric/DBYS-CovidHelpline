@@ -13,6 +13,9 @@
   },
   "dependencies": {
     "@fontsource/roboto": "^4.4.2",
+    "@fortawesome/fontawesome-svg-core": "^1.2.35",
+    "@fortawesome/free-solid-svg-icons": "^5.15.3",
+    "@fortawesome/react-fontawesome": "^0.1.14",
     "@material-ui/core": "latest",
     "@material-ui/icons": "^4.11.2",
     "@material-ui/styles": "latest",

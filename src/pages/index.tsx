@@ -7,31 +7,24 @@ import {
   CardContent,
   Grid,
 } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
 import Link from "../components/Link";
 import Layout from "../components/Layout";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  BatteryStd,
-  Business,
-  LocalHospital,
-  LocalPharmacy,
-  LocalShipping,
-  RecordVoiceOver,
-  Restaurant,
-  Storefront,
-  Info,
-} from "@material-ui/icons";
+  faAmbulance,
+  faHospitalAlt,
+  faInfoCircle,
+  faTemperatureLow,
+  faPumpMedical,
+  faClinicMedical,
+  faUtensils,
+  faStore,
+  faUserFriends,
+} from "@fortawesome/free-solid-svg-icons";
 
 interface ElementMap {
   [key: string]: JSX.Element;
 }
-
-const useStyles = makeStyles({
-  wrapIcon: {
-    verticalAlign: "middle",
-    display: "inline-flex",
-  },
-});
 
 const menuLinks = [
   {
@@ -72,21 +65,35 @@ const menuLinks = [
   },
 ];
 
+const faIconColor = "#19857b";
+
 const menuIcon: ElementMap = {
-  "/hospital": <LocalHospital />,
-  "/ambulance": <LocalShipping />,
-  "/testcenter": <Business />,
-  "/oxygen": <BatteryStd />,
-  "/food": <Restaurant />,
-  "/grocery": <Storefront />,
-  "/counsellor": <RecordVoiceOver />,
-  "/pharmacy": <LocalPharmacy />,
-  "/about": <Info />,
+  "/hospital": (
+    <FontAwesomeIcon icon={faHospitalAlt} color={faIconColor} fixedWidth />
+  ),
+  "/ambulance": (
+    <FontAwesomeIcon icon={faAmbulance} color={faIconColor} fixedWidth />
+  ),
+  "/testcenter": (
+    <FontAwesomeIcon icon={faTemperatureLow} color={faIconColor} fixedWidth />
+  ),
+  "/oxygen": (
+    <FontAwesomeIcon icon={faPumpMedical} color={faIconColor} fixedWidth />
+  ),
+  "/food": <FontAwesomeIcon icon={faUtensils} color={faIconColor} fixedWidth />,
+  "/grocery": <FontAwesomeIcon icon={faStore} color={faIconColor} fixedWidth />,
+  "/counsellor": (
+    <FontAwesomeIcon icon={faUserFriends} color={faIconColor} fixedWidth />
+  ),
+  "/pharmacy": (
+    <FontAwesomeIcon icon={faClinicMedical} color={faIconColor} fixedWidth />
+  ),
+  "/about": (
+    <FontAwesomeIcon icon={faInfoCircle} color={faIconColor} fixedWidth />
+  ),
 };
 
 const HomeScreen: React.FC = () => {
-  const classes = useStyles();
-
   return (
     <Layout title={"Home"}>
       <Box my={4} textAlign={"justify"}>
@@ -95,7 +102,7 @@ const HomeScreen: React.FC = () => {
         </Typography>
         <Divider />
         <Typography variant="subtitle1" color="error" gutterBottom>
-          Last updated: 11:25 AM, 4th June 2021
+          Last updated: 11:25 AM, 4th June 2021. Refresh to check for updates
         </Typography>
         <Grid container spacing={1}>
           {menuLinks.map(
@@ -104,21 +111,8 @@ const HomeScreen: React.FC = () => {
                 <Link to={entry.link}>
                   <Card>
                     <CardContent>
-                      <Typography
-                        variant="h5"
-                        color="secondary"
-                        component="span"
-                        className={classes.wrapIcon}
-                      >
-                        {menuIcon[entry.link]}&nbsp;
-                      </Typography>
-                      <Typography
-                        variant="h5"
-                        color="textSecondary"
-                        component="span"
-                        noWrap
-                      >
-                        {entry.name}
+                      <Typography variant="h6" color="textSecondary">
+                        {menuIcon[entry.link]} {entry.name}
                       </Typography>
                     </CardContent>
                   </Card>
