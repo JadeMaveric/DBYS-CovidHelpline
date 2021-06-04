@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, Grid, Typography } from "@material-ui/core";
+import { Box, Grid, Typography, Card, CardContent } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Layout from "../components/Layout";
 import HospitalCard from "../components/HospitalCard";
@@ -30,6 +30,18 @@ const HospitalView: React.FC = () => {
       <Box className={classes.container}>
         {hospitals.length ? (
           <Grid container spacing={1}>
+            <Grid item xs={12} sm={12}>
+              <Card>
+                <CardContent>
+                  <Typography color="error">
+                    For real time data of Covid Beds, please visit&nbsp;
+                    <a href="https://goaonline.gov.in/beds">
+                      https://goaonline.gov.in/beds
+                    </a>
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
             {hospitals.map((hospital, index) => (
               <Grid item key={`hospital_${index}`} sm={6} xs={12}>
                 <HospitalCard hospital={hospital} />
