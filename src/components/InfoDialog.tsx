@@ -36,7 +36,12 @@ const InfoDialog: React.FC<DialogProps> = (props: DialogProps) => {
   const json_values = Object.values(jsonObj);
 
   return (
-    <Dialog onClose={onClose} aria-labelledby="info-dialog-title" open={open}>
+    <Dialog
+      onClose={onClose}
+      aria-labelledby="info-dialog-title"
+      open={open}
+      fullWidth
+    >
       <DialogTitle id="info-dialog-title">
         {jsonObj.name}
         {onClose ? (
