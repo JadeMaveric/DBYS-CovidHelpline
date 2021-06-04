@@ -9,7 +9,7 @@ import Layout from "../components/Layout";
 
 const useStyles = makeStyles({
   container: {
-    padding: 8,
+    paddingTop: 8,
   },
 });
 
@@ -26,7 +26,7 @@ const AmbulanceView: React.FC = () => {
     <Layout title={"Ambulances"} updateSearchTerm={updateSearchTerm}>
       <Box className={classes.container}>
         {ambulances.length ? (
-          <Grid container spacing={1}>
+          <Grid container spacing={2}>
             {ambulances.map((ambulance, index) => (
               <Grid item key={`ambulance_${index}`} sm={6} xs={12}>
                 <AmbulanceCard ambulance={ambulance} />

@@ -9,7 +9,7 @@ import { Hospital } from "../utils/types";
 
 const useStyles = makeStyles({
   container: {
-    padding: 8,
+    paddingTop: 8,
   },
 });
 

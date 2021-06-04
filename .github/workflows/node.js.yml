@@ -5,20 +5,20 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Install modules
-      run: npm install --include=dev
-    - name: Run ESLint
-      run: npx eslint . --ext .js,.jsx,.ts,.tsx
-    - name: Prettify code
-      uses: creyD/prettier_action@v3.3
-      with:
-        dry: true
+      - uses: actions/checkout@v2
+      - name: Install modules
+        run: npm install --include=dev
+      - name: Run ESLint
+        run: npx eslint . --ext .js,.jsx,.ts,.tsx
+      - name: Prettify code
+        uses: creyD/prettier_action@v3.3
+        with:
+          dry: true

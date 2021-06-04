@@ -104,10 +104,20 @@ const HomeScreen: React.FC = () => {
                 <Link to={entry.link}>
                   <Card>
                     <CardContent>
-                      <Typography variant="h5" color="secondary" component="span" className={classes.wrapIcon}>
+                      <Typography
+                        variant="h5"
+                        color="secondary"
+                        component="span"
+                        className={classes.wrapIcon}
+                      >
                         {menuIcon[entry.link]}&nbsp;
                       </Typography>
-                      <Typography variant="h5" color="textSecondary" component="span" noWrap>
+                      <Typography
+                        variant="h5"
+                        color="textSecondary"
+                        component="span"
+                        noWrap
+                      >
                         {entry.name}
                       </Typography>
                     </CardContent>
