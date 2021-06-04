@@ -23,7 +23,7 @@ const Index: React.FC = () => {
         </div>
         <div>
           <Typography variant="h6" color="error" gutterBottom>
-            Last updated: 11:25:00, 21st May 2021
+            Last updated: 11:25 AM, 4th June 2021
           </Typography>
         </div>
         <Divider />
