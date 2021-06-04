@@ -1,21 +1,27 @@
 import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import {
+  Button,
   Card,
   CardActions,
   CardContent,
-  Button,
-  Typography,
+  Chip,
   Tooltip,
+  Typography,
 } from "@material-ui/core";
 import { VerifiedUser, WarningRounded, LocationOn } from "@material-ui/icons";
 import InfoDialog from "./InfoDialog";
 import { TestCenter } from "../utils/types";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPhoneAlt } from "@fortawesome/free-solid-svg-icons";
 
 const useStyles = makeStyles({
   wrapIcon: {
     verticalAlign: "middle",
     display: "inline-flex",
+  },
+  contactChip: {
+    margin: 2,
   },
 });
 
@@ -67,9 +73,16 @@ const TestCenterCard: React.FC<CardProps> = (props: CardProps) => {
           <Typography variant="body2" component="p" noWrap>
             {testCenter.work_days}
           </Typography>
-          <Typography variant="body2" component="p" noWrap>
+          <Typography variant="body2" component="p" gutterBottom noWrap>
             {testCenter.work_hours}
           </Typography>
+          <div>
+            <Chip
+              icon={<FontAwesomeIcon icon={faPhoneAlt} fixedWidth />}
+              label={testCenter.contact}
+              className={classes.contactChip}
+            />
+          </div>
         </CardContent>
         <CardActions>
           <Button size="small" onClick={handleDialogOpen}>

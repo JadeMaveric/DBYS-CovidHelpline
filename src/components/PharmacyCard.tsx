@@ -1,21 +1,28 @@
 import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import {
+  Button,
   Card,
   CardActions,
   CardContent,
-  Button,
-  Typography,
+  Chip,
   Tooltip,
+  Typography,
 } from "@material-ui/core";
 import { VerifiedUser, WarningRounded, LocationOn } from "@material-ui/icons";
 import InfoDialog from "./InfoDialog";
 import { Pharmacy } from "../utils/types";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPhoneAlt } from "@fortawesome/free-solid-svg-icons";
+import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 
 const useStyles = makeStyles({
   wrapIcon: {
     verticalAlign: "middle",
     display: "inline-flex",
+  },
+  contactChip: {
+    margin: 2,
   },
 });
 
@@ -67,9 +74,25 @@ const PharmacyCard: React.FC<CardProps> = (props: CardProps) => {
           <Typography variant="body2" component="p" noWrap>
             {"Work Days: " + pharmacy.work_days}
           </Typography>
-          <Typography variant="body2" component="p" noWrap>
+          <Typography variant="body2" component="p" gutterBottom noWrap>
             {"Work Hours: " + pharmacy.work_hours}
           </Typography>
+          <div>
+            <Chip
+              icon={<FontAwesomeIcon icon={faPhoneAlt} fixedWidth />}
+              label={pharmacy.contact}
+              className={classes.contactChip}
+            />
+            {isFinite(Number(pharmacy.whatsapp.trim()[0])) ? (
+              <Chip
+                icon={
+                  <FontAwesomeIcon icon={faWhatsapp} fixedWidth size="lg" />
+                }
+                label={pharmacy.whatsapp.trim()}
+                className={classes.contactChip}
+              />
+            ) : null}
+          </div>
         </CardContent>
         <CardActions>
           <Button size="small" onClick={handleDialogOpen}>

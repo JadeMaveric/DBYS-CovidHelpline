@@ -1,21 +1,27 @@
 import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import {
+  Button,
   Card,
   CardActions,
   CardContent,
-  Button,
+  Chip,
   Typography,
   Tooltip,
 } from "@material-ui/core";
 import { VerifiedUser, WarningRounded, LocationOn } from "@material-ui/icons";
 import InfoDialog from "./InfoDialog";
 import { GrocerySupplier } from "../utils/types";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPhoneAlt } from "@fortawesome/free-solid-svg-icons";
 
 const useStyles = makeStyles({
   wrapIcon: {
     verticalAlign: "middle",
     display: "inline-flex",
+  },
+  contactChip: {
+    margin: 2,
   },
 });
 
@@ -67,9 +73,16 @@ const GrocerySupplierCard: React.FC<CardProps> = (props: CardProps) => {
           <Typography variant="body2" component="p" noWrap>
             {"Work Days: " + grocerySupplier.work_days}
           </Typography>
-          <Typography variant="body2" component="p" noWrap>
+          <Typography variant="body2" component="p" gutterBottom noWrap>
             {"Work Hours: " + grocerySupplier.work_hours}
           </Typography>
+          <div>
+            <Chip
+              icon={<FontAwesomeIcon icon={faPhoneAlt} fixedWidth />}
+              label={grocerySupplier.contact}
+              className={classes.contactChip}
+            />
+          </div>
         </CardContent>
         <CardActions>
           <Button size="small" onClick={handleDialogOpen}>

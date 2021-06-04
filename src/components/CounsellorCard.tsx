@@ -1,21 +1,28 @@
 import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import {
+  Button,
   Card,
   CardActions,
   CardContent,
-  Button,
-  Typography,
+  Chip,
   Tooltip,
+  Typography,
 } from "@material-ui/core";
 import { VerifiedUser, WarningRounded, LocationOn } from "@material-ui/icons";
 import InfoDialog from "./InfoDialog";
 import { Counsellor } from "../utils/types";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPhoneAlt } from "@fortawesome/free-solid-svg-icons";
+import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 
 const useStyles = makeStyles({
   wrapIcon: {
     verticalAlign: "middle",
     display: "inline-flex",
+  },
+  contactChip: {
+    margin: 2,
   },
 });
 
@@ -60,15 +67,35 @@ const CounsellorCard: React.FC<CardProps> = (props: CardProps) => {
           >
             {verifiedLabel} {counsellor.name}
           </Typography>
-          <Typography color="textSecondary" gutterBottom>
-            {"WHATSAPP: " + counsellor.whatsapp}
-          </Typography>
           <Typography className={classes.wrapIcon} gutterBottom>
             <LocationOn color="primary" /> {counsellor.location}
           </Typography>
-          <Typography variant="body2" component="p" noWrap>
+          <Typography variant="body2" component="p">
             {counsellor.work_hours}
           </Typography>
+          <Typography variant="body2" component="p" gutterBottom>
+            Charges: {counsellor.charges}
+          </Typography>
+          <div>
+            <Chip
+              icon={<FontAwesomeIcon icon={faPhoneAlt} fixedWidth />}
+              label={counsellor.contact}
+              className={classes.contactChip}
+            />
+            {!counsellor.whatsapp.toUpperCase().includes("NO") ? (
+              <Chip
+                icon={
+                  <FontAwesomeIcon icon={faWhatsapp} fixedWidth size="lg" />
+                }
+                label={
+                  counsellor.whatsapp.trim().length > 3
+                    ? counsellor.whatsapp.slice(3).trim().slice(1, -1)
+                    : counsellor.contact
+                }
+                className={classes.contactChip}
+              />
+            ) : null}
+          </div>
         </CardContent>
         <CardActions>
           <Button size="small" onClick={() => setOpen(true)}>

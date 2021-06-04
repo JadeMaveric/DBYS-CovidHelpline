@@ -4,6 +4,7 @@ import {
   Card,
   CardActions,
   CardContent,
+  Chip,
   Button,
   Typography,
   Tooltip,
@@ -11,11 +12,16 @@ import {
 import { VerifiedUser, WarningRounded, LocationOn } from "@material-ui/icons";
 import InfoDialog from "./InfoDialog";
 import { FoodSupplier } from "../utils/types";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPhoneAlt } from "@fortawesome/free-solid-svg-icons";
 
 const useStyles = makeStyles({
   wrapIcon: {
     verticalAlign: "middle",
     display: "inline-flex",
+  },
+  contactChip: {
+    margin: 2,
   },
 });
 
@@ -58,15 +64,22 @@ const FoodSupplierCard: React.FC<CardProps> = (props: CardProps) => {
           >
             {verifiedLabel} {foodSupplier.name}
           </Typography>
-          <Typography color="textSecondary" gutterBottom>
+          <Typography color="textSecondary">
             {foodSupplier.source + " - " + foodSupplier.type}
           </Typography>
           <Typography className={classes.wrapIcon} gutterBottom>
             <LocationOn color="primary" /> {foodSupplier.location}
           </Typography>
-          <Typography variant="body2" component="p" noWrap>
+          <Typography variant="body2" component="p" gutterBottom noWrap>
             {foodSupplier.notes}
           </Typography>
+          <div>
+            <Chip
+              icon={<FontAwesomeIcon icon={faPhoneAlt} fixedWidth />}
+              label={foodSupplier.contact}
+              className={classes.contactChip}
+            />
+          </div>
         </CardContent>
         <CardActions>
           <Button size="small" onClick={handleDialogOpen}>

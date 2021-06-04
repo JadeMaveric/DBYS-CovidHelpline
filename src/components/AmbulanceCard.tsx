@@ -1,21 +1,27 @@
 import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import {
+  Button,
   Card,
   CardActions,
   CardContent,
-  Button,
-  Typography,
+  Chip,
   Tooltip,
+  Typography,
 } from "@material-ui/core";
 import { VerifiedUser, WarningRounded, LocationOn } from "@material-ui/icons";
 import InfoDialog from "./InfoDialog";
 import { Ambulance } from "../utils/types";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPhoneAlt } from "@fortawesome/free-solid-svg-icons";
 
 const useStyles = makeStyles({
   wrapIcon: {
     verticalAlign: "middle",
     display: "inline-flex",
+  },
+  contactChip: {
+    margin: 2,
   },
 });
 
@@ -67,9 +73,21 @@ const AmbulanceCard: React.FC<CardProps> = (props: CardProps) => {
               ? ambulance.service_areas
               : ambulance.location}
           </Typography>
-          <Typography variant="body2" component="p" noWrap>
+          <Typography variant="body2" component="p" gutterBottom noWrap>
             {ambulance.facility}
           </Typography>
+          <div>
+            {ambulance.contact
+              .split("/")
+              .slice(0, 3)
+              .map((contact) => (
+                <Chip
+                  icon={<FontAwesomeIcon icon={faPhoneAlt} fixedWidth />}
+                  label={contact.trim()}
+                  className={classes.contactChip}
+                />
+              ))}
+          </div>
         </CardContent>
         <CardActions>
           <Button size="small" onClick={handleDialogOpen}>
