@@ -1,4 +1,11 @@
-import { Box, Typography, Divider, Card, CardContent, Grid } from "@material-ui/core";
+import {
+  Box,
+  Typography,
+  Divider,
+  Card,
+  CardContent,
+  Grid,
+} from "@material-ui/core";
 import React from "react";
 import Link from "../components/Link";
 import Layout from "../components/Layout";
@@ -54,8 +61,8 @@ const menuLinks = [
   {
     name: "About",
     link: "/about",
-  }
-]
+  },
+];
 
 const menuIcon: ElementMap = {
   "/hospital": <LocalHospital />,
@@ -81,22 +88,21 @@ const HomeScreen: React.FC = () => {
           Last updated: 11:25 AM, 4th June 2021
         </Typography>
         <Grid container spacing={1}>
-          {menuLinks.map((entry: {name:string, link:string}, index: number) => (
-            <Grid item key={`menu_${index}`} sm={6} xs={12}>
-              <Link to={entry.link}>
-                <Card>
-                  <CardContent>
-                    <Typography
-                      variant="h4"
-                      color="primary"
-                      noWrap
-                    >
-                      {menuIcon[entry.link]} {entry.name}
-                    </Typography>
-                  </CardContent>
-                </Card>
-              </Link>
-            </Grid>))}
+          {menuLinks.map(
+            (entry: { name: string; link: string }, index: number) => (
+              <Grid item key={`menu_${index}`} sm={6} xs={12}>
+                <Link to={entry.link}>
+                  <Card>
+                    <CardContent>
+                      <Typography variant="h4" color="primary" noWrap>
+                        {menuIcon[entry.link]} {entry.name}
+                      </Typography>
+                    </CardContent>
+                  </Card>
+                </Link>
+              </Grid>
+            )
+          )}
         </Grid>
       </Box>
     </Layout>

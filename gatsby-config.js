@@ -72,7 +72,7 @@ module.exports = {
       {
         name: "About",
         link: "/about",
-      }
+      },
     ],
   },
 };
