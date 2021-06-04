@@ -1,3 +1,4 @@
+import React from "react";
 import {
   Box,
   Typography,
@@ -6,7 +7,7 @@ import {
   CardContent,
   Grid,
 } from "@material-ui/core";
-import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
 import Link from "../components/Link";
 import Layout from "../components/Layout";
 import {
@@ -24,6 +25,13 @@ import {
 interface ElementMap {
   [key: string]: JSX.Element;
 }
+
+const useStyles = makeStyles({
+  wrapIcon: {
+    verticalAlign: "middle",
+    display: "inline-flex",
+  },
+});
 
 const menuLinks = [
   {
@@ -77,14 +85,16 @@ const menuIcon: ElementMap = {
 };
 
 const HomeScreen: React.FC = () => {
+  const classes = useStyles();
+
   return (
     <Layout title={"Home"}>
       <Box my={4} textAlign={"justify"}>
-        <Typography variant="h4" component="h1" gutterBottom>
-          DBYS-Covid Helpline
+        <Typography variant="h4" gutterBottom>
+          DBYS Covid Helpline
         </Typography>
         <Divider />
-        <Typography variant="h6" color="error" gutterBottom>
+        <Typography variant="subtitle1" color="error" gutterBottom>
           Last updated: 11:25 AM, 4th June 2021
         </Typography>
         <Grid container spacing={1}>
@@ -94,8 +104,11 @@ const HomeScreen: React.FC = () => {
                 <Link to={entry.link}>
                   <Card>
                     <CardContent>
-                      <Typography variant="h4" color="primary" noWrap>
-                        {menuIcon[entry.link]} {entry.name}
+                      <Typography variant="h5" color="secondary" component="span" className={classes.wrapIcon}>
+                        {menuIcon[entry.link]}&nbsp;
+                      </Typography>
+                      <Typography variant="h5" color="textSecondary" component="span" noWrap>
+                        {entry.name}
                       </Typography>
                     </CardContent>
                   </Card>
