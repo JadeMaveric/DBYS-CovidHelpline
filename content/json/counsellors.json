@@ -338,5 +338,15 @@
     "charges": "Free",
     "whatsapp": "NO",
     "notes": "Specialises in mind health and wellness counselling for adolescents and young adults / Fluent in English, Konkani, Marathi and Hindi/ Kindly book an appointment through SMS or call / Begins from 17th May"
+  },
+  {
+    "name": "Joanna Jewella Gonsalves",
+    "verified": true,
+    "contact": 7507406974,
+    "location": "Teleconsultation",
+    "work_hours": "Monday to Saturday (9 am - 6 pm)",
+    "charges": "Free",
+    "whatsapp": "YES (ONLY TO SCHEDULE SESSIONS)",
+    "notes": "Specialises in adolescent developement, trauma, anxiety, anger management and self-esteem/ Fluent in English, Konkani and Hindi. "
   }
 ]
