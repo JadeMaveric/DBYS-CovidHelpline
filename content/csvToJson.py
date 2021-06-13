@@ -7,6 +7,9 @@ def hospitalDF(csvPath):
     try:
         print(f"Processing {csvPath}")
         df = pd.read_csv(csvPath)
+        # Only for hospitals, remove first line - it's a PSA
+        df.columns = df.iloc[0]
+        df.drop(0, inplace=True)
         header_guard = (df.columns == ["NAME OF HOSPITALS","TYPE","FACILITY","CONTACT NOS","LOCATION","ADDRESS","NO of BEDS","COVID BEDS","OXYGEN BEDS","NODAL OFFICER","CONTACT NUMBER","NOTES","VERIFIED?"]).all()
         assert header_guard
     except FileNotFoundError:
@@ -248,27 +251,32 @@ def pharmacyDF(csvPath):
     return final
 
 
+def sheet_url(gid):
+    gsheet_id = '2PACX-1vQqT2DSg5Cvfoyiu2EuTZaCpZjs22enZ0sdHef5dxk046vZKnhdXfKXhlVLZfNT31TOYMSY_7vvkHYN'
+    url = f'https://docs.google.com/spreadsheets/d/e/{gsheet_id}/pub?output=csv&gid={gid}'
+    return url
+
 if __name__ == '__main__':
-    hospital = hospitalDF('./content/csv/hospitals.csv')
+    hospital = hospitalDF(sheet_url(1484367194))
     hospital.to_json('./content/json/hospitals.json', orient='records')
 
-    ambulance = ambulanceDF('./content/csv/ambulances.csv')
+    ambulance = ambulanceDF(sheet_url(2010422691))
     ambulance.to_json('./content/json/ambulances.json', orient='records')
 
-    testCenter = testCenterDF('./content/csv/testCenters.csv')
+    testCenter = testCenterDF(sheet_url(833979680))
     testCenter.to_json('./content/json/testCenters.json', orient='records')
 
-    oxygenSupplier = oxygenSupplierDF('./content/csv/oxygenSuppliers.csv')
+    oxygenSupplier = oxygenSupplierDF(sheet_url(0))
     oxygenSupplier.to_json('./content/json/oxygenSuppliers.json', orient='records')
 
-    food = foodDF('./content/csv/food.csv')
+    food = foodDF(sheet_url(1235569691))
     food.to_json('./content/json/food.json', orient='records')
 
-    grocery = groceryDF('./content/csv/grocery.csv')
+    grocery = groceryDF(sheet_url(1656957025))
     grocery.to_json('./content/json/grocery.json', orient='records')
 
-    counsellor = counsellorDF('./content/csv/counsellors.csv')
+    counsellor = counsellorDF(sheet_url(122552600))
     counsellor.to_json('./content/json/counsellors.json', orient='records')
 
-    pharmacy = pharmacyDF('./content/csv/pharmacy.csv')
+    pharmacy = pharmacyDF(sheet_url(302381169))
     pharmacy.to_json('./content/json/pharmacy.json', orient='records')
