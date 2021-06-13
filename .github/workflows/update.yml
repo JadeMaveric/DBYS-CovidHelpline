@@ -34,6 +34,7 @@ jobs:
       run: npx prettier --write content/json
     - name: Push changes to repo
       run: |
+        date >> .github/updatetime.log
         git config user.name github-actions
         git config user.email github-actions@github.com
         git add .
