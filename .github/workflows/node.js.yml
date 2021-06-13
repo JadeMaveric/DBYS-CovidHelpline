@@ -18,7 +18,7 @@ jobs:
         with:
           node-version: 14
       - name: Install modules
-        run: npm ci
+        run: npm install --include=dev
       - name: Run ESLint
         run: npm run lint
       - name: Prettify code

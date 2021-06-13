@@ -9,7 +9,7 @@ import {
   Tooltip,
   Typography,
 } from "@material-ui/core";
-import { VerifiedUser, WarningRounded, LocationOn } from "@material-ui/icons";
+import { WarningRounded, LocationOn } from "@material-ui/icons";
 import InfoDialog from "./InfoDialog";
 import { TestCenter } from "../utils/types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

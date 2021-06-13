@@ -27,7 +27,8 @@
     "gatsby-plugin-react-helmet": "latest",
     "react": "latest",
     "react-dom": "latest",
-    "react-helmet": "latest"
+    "react-helmet": "latest",
+    "typescript": "^4.3.2"
   },
   "devDependencies": {
     "@types/react-helmet": "^6.1.1",
