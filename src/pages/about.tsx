@@ -1,10 +1,21 @@
 import React from "react";
+import { graphql, useStaticQuery } from "gatsby";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import Layout from "../components/Layout";
 import { Divider, Grid } from "@material-ui/core";
 
 const Index: React.FC = () => {
+  const query = useStaticQuery(graphql`
+    query {
+      site {
+        buildTime
+      }
+    }
+  `);
+
+  const buildTime = new Date(query.site.buildTime);
+
   return (
     <Layout title="About">
       <Box my={4} textAlign={"justify"}>
@@ -23,7 +34,7 @@ const Index: React.FC = () => {
         </div>
         <div>
           <Typography variant="h6" color="error" gutterBottom>
-            Last updated: 11:25 AM, 4th May 2021
+            Last updated: {buildTime.toLocaleString()}
           </Typography>
         </div>
         <Divider />
