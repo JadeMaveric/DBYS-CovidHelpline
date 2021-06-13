@@ -3,9 +3,9 @@
   "version": "4.0.0",
   "private": true,
   "scripts": {
-    "develop": "gatsby develop",
+    "develop": "gatsby develop --host 0.0.0.0 --port 8000",
     "build": "gatsby build",
-    "serve": "gatsby serve",
+    "serve": "gatsby serve --host 0.0.0.0 --port 8000",
     "makejson": "python content/csvToJson.py && npx prettier --write content/json",
     "format": "prettier . --write",
     "lint": "eslint . --fix",
@@ -28,6 +28,7 @@
     "react": "latest",
     "react-dom": "latest",
     "react-helmet": "latest",
+    "tiny-relative-date": "^1.3.0",
     "typescript": "^4.3.2"
   },
   "devDependencies": {

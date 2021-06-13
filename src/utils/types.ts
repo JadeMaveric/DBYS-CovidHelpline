@@ -106,3 +106,18 @@ export interface Pharmacy {
   oximeter_available: string;
   Remarks: string;
 }
+
+export interface SiteMetaData {
+  site: {
+    buildTime: string;
+    siteMetadata: {
+      title: string;
+      description: string;
+      keywords: string;
+      menuLinks: {
+        name: string;
+        link: string;
+      }[];
+    };
+  };
+}

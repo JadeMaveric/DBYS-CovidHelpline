@@ -1,4 +1,6 @@
 import React from "react";
+import { graphql, useStaticQuery } from "gatsby";
+import relativeDate from "tiny-relative-date";
 import {
   Box,
   Typography,
@@ -21,49 +23,11 @@ import {
   faStore,
   faUserFriends,
 } from "@fortawesome/free-solid-svg-icons";
+import { SiteMetaData } from "../utils/types";
 
 interface ElementMap {
   [key: string]: JSX.Element;
 }
-
-const menuLinks = [
-  {
-    name: "Hospitals + Care Centers",
-    link: "/hospital",
-  },
-  {
-    name: "Ambulances",
-    link: "/ambulance",
-  },
-  {
-    name: "Test Centers",
-    link: "/testcenter",
-  },
-  {
-    name: "Oxygen Suppliers",
-    link: "/oxygen",
-  },
-  {
-    name: "Cooked Food",
-    link: "/food",
-  },
-  {
-    name: "Groceries/Kits",
-    link: "/grocery",
-  },
-  {
-    name: "Counsellors",
-    link: "/counsellor",
-  },
-  {
-    name: "Pharmacies",
-    link: "/pharmacy",
-  },
-  {
-    name: "About",
-    link: "/about",
-  },
-];
 
 const faIconColor = "#19857b";
 
@@ -94,6 +58,33 @@ const menuIcon: ElementMap = {
 };
 
 const HomeScreen: React.FC = () => {
+  const query : SiteMetaData = useStaticQuery(graphql`
+    query {
+      site {
+        buildTime
+        siteMetadata {
+          title
+          description
+          keywords
+          menuLinks {
+            name
+            link
+          }
+        }
+      }
+    }
+  `)
+  const buildTime = new Date(query.site.buildTime);
+  const relativeTime = relativeDate(buildTime);
+  const dateColour = () => {
+    const currTime = new Date();
+    const daysDiff = Math.floor((currTime.getTime() - buildTime.getTime()) / (1000 * 60 * 60 * 24))
+    if (daysDiff <= 2)
+      return "secondary"
+    else
+      return "error"
+  }
+
   return (
     <Layout title={"Home"}>
       <Box my={4} textAlign={"justify"}>
@@ -101,11 +92,11 @@ const HomeScreen: React.FC = () => {
           DBYS Covid Helpline
         </Typography>
         <Divider />
-        <Typography variant="subtitle1" color="error" gutterBottom>
-          Last updated: 11:25 AM, 4th June 2021. Refresh to check for updates
+        <Typography variant="subtitle1" color={dateColour()} gutterBottom>
+          Last updated: {relativeTime}
         </Typography>
         <Grid container spacing={1}>
-          {menuLinks.map(
+          {query.site.siteMetadata.menuLinks.filter(entry => entry.link != '/').map(
             (entry: { name: string; link: string }, index: number) => (
               <Grid item key={`menu_${index}`} sm={6} xs={12}>
                 <Link to={entry.link}>

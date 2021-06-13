@@ -1,10 +1,11 @@
 import { Container, Box, Divider, Typography } from "@material-ui/core";
 import { graphql, StaticQuery } from "gatsby";
-import React, { useState } from "react";
+import React, { useState, createContext } from "react";
 import Helmet from "react-helmet";
 import ResponsiveDrawer from "./ResponsiveDrawer";
 import AppBar from "./CustomAppBar";
 import SearchBar from "./SearchBar";
+import { SiteMetaData } from "../utils/types";
 
 interface Props {
   title: string;
@@ -12,6 +13,8 @@ interface Props {
   updateSearchTerm?: React.Dispatch<React.SetStateAction<string>>;
   children: JSX.Element;
 }
+
+export const SiteMetadataContext = createContext<SiteMetaData|null>(null);
 
 const Layout: React.FC<Props> = (props: Props) => {
   const { children, title, updateSearchTerm } = props;
@@ -24,7 +27,7 @@ const Layout: React.FC<Props> = (props: Props) => {
   return (
     <StaticQuery
       query={graphql`
-        query SiteTitleQuery {
+        query {
           site {
             siteMetadata {
               title
@@ -38,7 +41,7 @@ const Layout: React.FC<Props> = (props: Props) => {
           }
         }
       `}
-      render={(data) => (
+      render={(data: SiteMetaData) => (
         <>
           <Helmet
             title={data.site.siteMetadata.title}
@@ -65,7 +68,9 @@ const Layout: React.FC<Props> = (props: Props) => {
             {updateSearchTerm ? (
               <SearchBar queryHandler={(s) => updateSearchTerm(s)} />
             ) : null}
+            <SiteMetadataContext.Provider value={data}>
             <main>{children}</main>
+            </SiteMetadataContext.Provider>
             <Divider />
             <Box textAlign="center">
               <Typography>
