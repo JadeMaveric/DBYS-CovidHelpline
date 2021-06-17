@@ -96,7 +96,7 @@
     "delivery_available": "Yes",
     "work_hours": "9:30 am -5:30 pm (in case of emergency , can contact at any time)",
     "work_days": "Monday - Saturday (in case of emergency ,can contact even on Sunday)",
-    "notes": "Oxygen Concentrator (10 ltr.) -Rs.84,000 including GST (currently not in stock ).Empty Oxygen Cylinder - Rs.18,000 (3 pcs. in stock). Oxygen regulator - Rs.3,600  (80 pcs. in stock) .NRB Mask -  (currently not in stock.). 3 ball spirometer  - Rs.400 (25 pcs. in stock.). Oxymeter -   Rs.900 (20 pcs in stock) & Rs.1100 (5 pcs in stock)"
+    "notes": "Oxygen Concentrator (10 ltr.) -Rs 84000 including GST (currently not in stock ).Empty Oxygen Cylinder - Rs.18000 (3 pcs in stock). Oxygen regulator - Rs.3,600  (60 pcs. in stock) . NRB Masks - currently not in stock.). 3 ball spirometer  - Rs.400 (15 pcs. in stock.). Oxymeter -  Rs.1100 (20 pcs in stock)"
   },
   {
     "name": "IndiaNow Solutions",
@@ -129,7 +129,7 @@
     "delivery_available": "No",
     "work_hours": "24*7",
     "work_days": "24*7",
-    "notes": "Oxygen regulators 5 liters, for patients at home, contact the number given , form will be given, and provide details of physicians  they will cross check and verify and provide the same"
+    "notes": "Oxygen concentrators 5 liters, for patients at home, contact the number given , form will be given, and provide details of physicians  they will cross check and verify and provide the same,link will be provided on Whatsapp, concentrators will be provided anywhere in Goa"
   },
   {
     "name": "SIO Goa Zone",
@@ -184,7 +184,7 @@
     "delivery_available": "Calling all over Goa",
     "work_hours": "9:00am-10:00pm",
     "work_days": "All Days",
-    "notes": "Only Teleconsulting for home isolated patients. Patient has to text name, address and Ph. No. on whatsapp and then the doctors will call."
+    "notes": "NOT AN OXYGEN SERVICE\n( National organization of doctors)\n\n\nOnly Teleconsulting for home isolated patients. Patient has to text name, address and Ph. No. on whatsapp and then the doctors will call."
   },
   {
     "name": "Amit Patkar Initiative",
@@ -259,8 +259,8 @@
     "location": "Panjim",
     "address": "Panjim",
     "delivery_available": "No",
-    "work_hours": "24*7",
-    "work_days": "24*7",
+    "work_hours": "9:00 am - 1:00 pm & 3:00 pm - 6:00 pm",
+    "work_days": "Monday - Saturday",
     "notes": "Oxygen Concentrators  5 ltr flow"
   },
   {
@@ -272,7 +272,7 @@
     "delivery_available": "Yes (Only for people of Chinchinim)",
     "work_hours": "24*7",
     "work_days": "24*7",
-    "notes": " Oxygen Cylinders along with oxygen regulator(Free of cost) 2 units available.20 Oxymeters available.Oxygen concentrators currently not available (donated, whenever available)."
+    "notes": " Oxygen Cylinders along with oxygen regulator(Free of cost) - currently not in stock.20 Oxymeters available.Oxygen concentrators currently not available (donated, whenever available)."
   },
   {
     "name": "Amonkar(Pioneer distributors)",
@@ -294,6 +294,17 @@
     "delivery_available": "No (delivery provided only if the person is not in a position to come and pick it up or in an urgent case))",
     "work_hours": "24*7",
     "work_days": "24*7",
-    "notes": "Oxygen Concentrators for Free use by Covid positive patients. Documents needed:- Doctor's prescription mentioning the no.of required day's and flow rate. Proof of identity. Conditions:- Maximum usage duration for the Oxygen Concentrator is for 8 days. A deposit of Rs. 10,000 will be kept as assurance and will be refunded when the machine is returned in original condition on the decided date. Cheque or Bank deposit accepted. If someone can't afford the deposit, it can be wavied off with other proof. Form will be shared once contacted and the details have to be filled in"
+    "notes": "Oxygen Concentrators ( in stock) for Free use by Covid positive patients. Documents needed:- Doctor's prescription mentioning the no.of required day's and flow rate. Proof of identity. Conditions:- Maximum usage duration for the Oxygen Concentrator is for 8 days. A deposit of Rs. 10,000 will be kept as assurance and will be refunded when the machine is returned in original condition on the decided date. Cheque or Bank deposit accepted. If someone can't afford the deposit, it can be wavied off with other proof. Form will be shared once contacted and the details have to be filled in"
+  },
+  {
+    "name": "Felix / Jollysha",
+    "verified": true,
+    "contact": "8554095851",
+    "location": "Betalbatim",
+    "address": "Betalbatim Salcete Goa ",
+    "delivery_available": "Yes",
+    "work_hours": "9:00am-6:00pm",
+    "work_days": "All Days ",
+    "notes": "Oxymeters and Oxygen Concentrators for those in home isolation to be used and returned back. for people around Margao, Betalbatim, Varca & Chinchinim"
   }
 ]
