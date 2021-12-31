@@ -56,10 +56,7 @@ const TestCenterCard: React.FC<CardProps> = (props: CardProps) => {
     <>
       <Card>
         <CardContent onClick={handleDialogOpen}>
-          <Typography
-            variant="h6"
-            color="textPrimary"
-          >
+          <Typography variant="h6" color="textPrimary">
             {testCenter.name} {verifiedLabel}
           </Typography>
           <Typography color="textSecondary" gutterBottom>

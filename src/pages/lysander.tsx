@@ -11,19 +11,19 @@ const Index: React.FC = () => {
         <Typography variant="h4" component="h1" gutterBottom>
           DBYS-Covid Helpline
         </Typography>
-          <Typography>Hello Lysander. I've been expecting you...</Typography>
+        <Typography>Hello Lysander. I've been expecting you...</Typography>
         <Divider />
         <Box textAlign="center">
           <Grid container spacing={3}>
             <Grid item sm={6}>
-          <Link href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
-              <Typography color="primary">BLUE PILL</Typography>
-          </Link>
+              <Link href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
+                <Typography color="primary">BLUE PILL</Typography>
+              </Link>
             </Grid>
             <Grid item sm={6}>
-          <Link href="https://www.youtube.com/watch?v=L6IFZ6GWEmo">
-              <Typography color="error">RED PILL</Typography>
-          </Link>
+              <Link href="https://www.youtube.com/watch?v=L6IFZ6GWEmo">
+                <Typography color="error">RED PILL</Typography>
+              </Link>
             </Grid>
           </Grid>
         </Box>

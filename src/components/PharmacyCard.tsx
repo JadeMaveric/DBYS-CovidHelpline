@@ -57,10 +57,7 @@ const PharmacyCard: React.FC<CardProps> = (props: CardProps) => {
     <>
       <Card>
         <CardContent onClick={handleDialogOpen}>
-          <Typography
-            variant="h6"
-            color="textPrimary"
-          >
+          <Typography variant="h6" color="textPrimary">
             {pharmacy.name} {verifiedLabel}
           </Typography>
           <Typography color="textSecondary" gutterBottom noWrap>

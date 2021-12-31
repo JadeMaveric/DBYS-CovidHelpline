@@ -56,10 +56,7 @@ const HospitalCard: React.FC<CardProps> = (props: CardProps) => {
     <>
       <Card>
         <CardContent onClick={handleDialogOpen}>
-          <Typography
-            variant="h6"
-            color="textPrimary"
-          >
+          <Typography variant="h6" color="textPrimary">
             {hospital.name} {verifiedLabel}
           </Typography>
           <Typography color="textSecondary" gutterBottom>

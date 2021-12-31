@@ -56,10 +56,7 @@ const OxygenSupplierCard: React.FC<CardProps> = (props: CardProps) => {
     <>
       <Card>
         <CardContent onClick={handleDialogOpen}>
-          <Typography
-            variant="h6"
-            color="textPrimary"
-          >
+          <Typography variant="h6" color="textPrimary">
             {oxygenSupplier.name} {verifiedLabel}
           </Typography>
           <Typography className={classes.wrapIcon} gutterBottom>

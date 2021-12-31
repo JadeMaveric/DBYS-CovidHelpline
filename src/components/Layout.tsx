@@ -14,7 +14,7 @@ interface Props {
   children: JSX.Element;
 }
 
-export const SiteMetadataContext = createContext<SiteMetaData|null>(null);
+export const SiteMetadataContext = createContext<SiteMetaData | null>(null);
 
 const Layout: React.FC<Props> = (props: Props) => {
   const { children, title, updateSearchTerm } = props;
@@ -69,7 +69,7 @@ const Layout: React.FC<Props> = (props: Props) => {
               <SearchBar queryHandler={(s) => updateSearchTerm(s)} />
             ) : null}
             <SiteMetadataContext.Provider value={data}>
-            <main>{children}</main>
+              <main>{children}</main>
             </SiteMetadataContext.Provider>
             <Divider />
             <Box textAlign="center">

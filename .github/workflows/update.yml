@@ -4,7 +4,7 @@ name: Update Files
 # or API.
 on:
   schedule:
-    - cron: '0, 0,12 * * *'
+    - cron: "0, 0,12 * * *"
   workflow_dispatch:
     # Inputs the workflow accepts.
 #     inputs:
@@ -21,22 +21,22 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-node@v1
-    - uses: actions/setup-python@v2.2.2
-    - name: Install Dependencies
-      run: |
-        pip install pandas
-        npm install prettier
-    - name: Download and convert files
-      run: python content/csvToJson.py
-    - name: Format JSON files
-      run: npx prettier --write content/json
-    - name: Push changes to repo
-      run: |
-        date >> .github/updatetime.log
-        git config user.name github-actions
-        git config user.email github-actions@github.com
-        git add .
-        git commit -m "Update data"
-        git push
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+      - uses: actions/setup-python@v2.2.2
+      - name: Install Dependencies
+        run: |
+          pip install pandas
+          npm install prettier
+      - name: Download and convert files
+        run: python content/csvToJson.py
+      - name: Format JSON files
+        run: npx prettier --write content/json
+      - name: Push changes to repo
+        run: |
+          date >> .github/updatetime.log
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add .
+          git commit -m "Update data"
+          git push

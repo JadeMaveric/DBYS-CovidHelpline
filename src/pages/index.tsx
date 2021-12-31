@@ -58,7 +58,7 @@ const menuIcon: ElementMap = {
 };
 
 const HomeScreen: React.FC = () => {
-  const query : SiteMetaData = useStaticQuery(graphql`
+  const query: SiteMetaData = useStaticQuery(graphql`
     query {
       site {
         buildTime
@@ -73,17 +73,17 @@ const HomeScreen: React.FC = () => {
         }
       }
     }
-  `)
+  `);
   const buildTime = new Date(query.site.buildTime);
   const relativeTime = relativeDate(buildTime);
   const dateColour = () => {
     const currTime = new Date();
-    const daysDiff = Math.floor((currTime.getTime() - buildTime.getTime()) / (1000 * 60 * 60 * 24))
-    if (daysDiff <= 2)
-      return "secondary"
-    else
-      return "error"
-  }
+    const daysDiff = Math.floor(
+      (currTime.getTime() - buildTime.getTime()) / (1000 * 60 * 60 * 24)
+    );
+    if (daysDiff <= 2) return "secondary";
+    else return "error";
+  };
 
   return (
     <Layout title={"Home"}>
@@ -96,8 +96,9 @@ const HomeScreen: React.FC = () => {
           Last updated: {relativeTime}
         </Typography>
         <Grid container spacing={1}>
-          {query.site.siteMetadata.menuLinks.filter(entry => entry.link != '/').map(
-            (entry: { name: string; link: string }, index: number) => (
+          {query.site.siteMetadata.menuLinks
+            .filter((entry) => entry.link != "/")
+            .map((entry: { name: string; link: string }, index: number) => (
               <Grid item key={`menu_${index}`} sm={6} xs={12}>
                 <Link to={entry.link}>
                   <Card>
@@ -109,8 +110,7 @@ const HomeScreen: React.FC = () => {
                   </Card>
                 </Link>
               </Grid>
-            )
-          )}
+            ))}
         </Grid>
       </Box>
     </Layout>
